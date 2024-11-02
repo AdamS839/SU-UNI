@@ -8,4 +8,4 @@ them if you don't understand something, so ask them. In the moment you don't kno
 Go around and ask assistants or upper course students to give you notes to study from them. Most of the notes will be sent to your group in facebook if you have one.
 
 
-##WIP.
+## WIP.
