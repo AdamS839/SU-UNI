@@ -1,2 +1,5 @@
 # SU-UNI - FMI
-Publishing tasks and notes
+
+This is a repository about publishing notes, exercises and other work from FMI.
+
+tva e bratme.
