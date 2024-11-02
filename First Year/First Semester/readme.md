@@ -2,6 +2,8 @@
 
 I'm still new, there are a lot of things I don't know yet. This repository and info in readme files will change during this semester, so I'll leave info. 
 
+
+### Some things to say
 Go on lections, skip the beginning of C++ lections if you are more advanced, but still go on lections. Ask questions after lections if you don't understand something. Professors and assistants want you to question
 them if you don't understand something, so ask them. In the moment you don't know or in the break.
 
