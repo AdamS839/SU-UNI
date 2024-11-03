@@ -11,13 +11,13 @@ Will publish more info, tasks, exercises, notes and other stuff soon.
 
 ## Work in Progress
 
-This repository is actively being developed. More content will be published soon,
+Repository in development.
 
 ---
 
 ### About
 
-This repository is a collection of my work and studies from the first semester. It aims to provide a comprehensive resource for anyone interested in the subjects I'm covering.
+This repository will remain private until I pass my first course grade in FMI.
 
 ### Planning time
 
