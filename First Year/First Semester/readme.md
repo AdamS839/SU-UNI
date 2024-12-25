@@ -23,6 +23,7 @@ This repository will remain private until I pass my first course in FMI.
 ### Planning time
 
 ~~I dont have specific date to update other folders since i don't have a graphic tablet to write notes in, so i use notebooks and i don't write very good, so i'll leave them for~~
+
 Updating folders is easier since I won't add notes, I will just stick to adding info in each readme file in courses.
 
 - **Algebra** - Homework and maybe some self preparation tasks
