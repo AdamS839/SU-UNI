@@ -1,7 +1,10 @@
 
 # C++ Introduction
 
-Adding every week worth of exercises in practicums and seminars, plus self preparation from the lectors file with exercises.
+# Overview
 
-Will remain private.
+It's alright. for now
+
+# More Info
+Adding every week worth of exercises in practicums, plus self preparation (not most of the time) from the lectors file with exercises.
 
