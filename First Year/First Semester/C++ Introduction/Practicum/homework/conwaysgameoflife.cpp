@@ -1,5 +1,6 @@
 #include <iostream>
-#include <windows.h>
+#include <chrono>
+#include <thread>
 
 const int cellMaxAge = 6;
 
@@ -208,7 +209,7 @@ int main() {
         printGrid(grid, gridSizeInput);
         nextGeneration(grid, ageGrid, resistGrid, gridSizeInput); 
         ++currentGen;
-        Sleep(500);
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
     for (int i = 0; i < gridSizeInput; i++) {
