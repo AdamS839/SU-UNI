@@ -1,6 +1,8 @@
 #include <iostream>
+//забавяне на терминала
 #include <chrono>
 #include <thread>
+//
 
 const int cellMaxAge = 6;
 
@@ -113,6 +115,7 @@ void nextGeneration(bool** grid, int** ageGrid, int** resistanceGrid, int gridSi
         }
     }
 
+    //освобождаване на памет
     for (int i = 0; i < gridSizeInput; i++) {
         delete[] newGrid[i];
         delete[] newAgeGrid[i];
@@ -136,6 +139,7 @@ void startupGrid(bool** grid, int gridSizeInput) {
     }
 }
 
+//преглежда дали матрицата е празна
 bool isGridEmpty(bool** grid, int gridSizeInput) {
     bool empty = true;
     for (int i = 0; i < gridSizeInput; i++) {
@@ -145,10 +149,10 @@ bool isGridEmpty(bool** grid, int gridSizeInput) {
             }
         }
     }
-    if(empty) std::cout << "The next generation is empty" << std::endl;
     return empty;
 }
 
+//добавяне на клетка по наш избор
 void AddCellOfChoice(bool** grid, int gridSizeInput){
     int x, y;
     std::cout << "Input the coordinates of the cell you wish to be alive in order (X Y): ";
@@ -163,63 +167,103 @@ void AddCellOfChoice(bool** grid, int gridSizeInput){
 }
 
 int main() {
-    int gridSizeInput;
-    int finalGeneration;
+
+    int startNewGame;
     do
     {
-        std::cout << "Input grid size number between 10 and 30" << std::endl;
-        std::cin >> gridSizeInput;
-    } while (gridSizeInput < 10 || gridSizeInput > 30);
-    
-    do
-    {
-        std::cout << "Input a final generation number to view" << std::endl;
-        std::cin >> finalGeneration;
-    } while (finalGeneration < 0);
-    
+        int gridSizeInput;
+        int finalGeneration;
+        do
+        {
+            std::cout << "Input grid size number between 10 and 30" << std::endl;
+            std::cin >> gridSizeInput;
+        } while (gridSizeInput < 10 || gridSizeInput > 30);
+        
+        do
+        {
+            std::cout << "Input a final generation number to view" << std::endl;
+            std::cin >> finalGeneration;
+        } while (finalGeneration < 0);
+        
 
-    bool** grid = new bool*[gridSizeInput];
-    int** ageGrid = new int*[gridSizeInput];
-    int** resistGrid = new int*[gridSizeInput];
+        bool** grid = new bool*[gridSizeInput];
+        int** ageGrid = new int*[gridSizeInput];
+        int** resistGrid = new int*[gridSizeInput];
 
-    for (int i = 0; i < gridSizeInput; i++)
-    {
-        grid[i] = new bool[gridSizeInput]();
-        ageGrid[i] = new int[gridSizeInput]();
-        resistGrid[i] = new int[gridSizeInput]();
-    }
-    startupGrid(grid, gridSizeInput);
-    
-    char wishToAddAgain = 'y';
-    do
-    {
-        std::cout << "Do you wish to make a cell alive? (y/n): ";
-        std::cin >> wishToAddAgain;
-        if(wishToAddAgain == 'y') AddCellOfChoice(grid, gridSizeInput);
-    } while (wishToAddAgain != 'n');
-    
+        for (int i = 0; i < gridSizeInput; i++)
+        {
+            grid[i] = new bool[gridSizeInput]();
+            ageGrid[i] = new int[gridSizeInput]();
+            resistGrid[i] = new int[gridSizeInput]();
+        }
+        startupGrid(grid, gridSizeInput);
+        
+        char wishToAddAgain = 'y';
+        do
+        {
+            std::cout << "Do you wish to make a cell alive? (y/n): ";
+            std::cin >> wishToAddAgain;
+            if(wishToAddAgain == 'y') AddCellOfChoice(grid, gridSizeInput);
+        } while (wishToAddAgain != 'n');
+        
+        calculateCellImmunityBasedOnAliveCellsInRowAndCol(grid, resistGrid, gridSizeInput);
 
-   
-    calculateCellImmunityBasedOnAliveCellsInRowAndCol(grid, resistGrid, gridSizeInput);
+        int currentGen = 1;
+        while (!isGridEmpty(grid, gridSizeInput) && currentGen <= finalGeneration)
+        {
+            std::cout << "Generation " << currentGen << ":\n";
+            printGrid(grid, gridSizeInput);
+            nextGeneration(grid, ageGrid, resistGrid, gridSizeInput); 
+            ++currentGen;
+            //забавяне на терминала
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            //
+        }
 
-    int currentGen = 0;
-    while (!isGridEmpty(grid, gridSizeInput) && currentGen < finalGeneration)
-    {
-        std::cout << "Generation " << currentGen << ":\n";
-        printGrid(grid, gridSizeInput);
-        nextGeneration(grid, ageGrid, resistGrid, gridSizeInput); 
-        ++currentGen;
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    }
+        //позволяване за гледка на още поколения, ако матрицата не е празна
+        if (!isGridEmpty(grid, gridSizeInput)){
+            std::cout << "Seems like cells are still alive. Do you wish to view further generation? (y/n)" << std::endl;
+            char answer;
+            std::cin >> answer;
+            if(answer == 'y'){
+                std::cout << "Add a number for further view: " << std::endl;
+                int furtherview;
+                do
+                {
+                    std::cout << "Number must be positive (> 0)" << std::endl;
+                    std::cin >> furtherview;
+                } while (furtherview <= 0);
+                while (!isGridEmpty(grid, gridSizeInput) && currentGen <= finalGeneration + furtherview)
+                {
+                    std::cout << "Generation " << currentGen << ":\n";
+                    printGrid(grid, gridSizeInput);
+                    nextGeneration(grid, ageGrid, resistGrid, gridSizeInput);
+                    ++currentGen;
+                    //забавяне на терминала
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    //
+                }
+            }
+        }
+        else{
+            std::cout << "The next generation is empty." << std::endl;
+        }
 
-    for (int i = 0; i < gridSizeInput; i++) {
-        delete[] grid[i];
-        delete[] ageGrid[i];
-        delete[] resistGrid[i];
-    }
-    delete[] grid;
-    delete[] ageGrid;
-    delete[] resistGrid;
+        //освобождаване на памет
+        for (int i = 0; i < gridSizeInput; i++) {
+            delete[] grid[i];
+            delete[] ageGrid[i];
+            delete[] resistGrid[i];
+        }
+        delete[] grid;
+        delete[] ageGrid;
+        delete[] resistGrid;
+
+        //стартиране на нова игра
+        std::cout << "Do you wish to start another game? (1 - Play Again, Any num - End)" << std::endl;
+        std::cin >> startNewGame;
+
+    } while (startNewGame == 1);
 
     return 0;
 }
