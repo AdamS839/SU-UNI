@@ -6,5 +6,5 @@
 4. Go outside with your written themes
 5. If you got more than grade 3.00 on the sheet you wrote, an assitant will ask you some questions you need to answer
 6. The assistant writes a grade for you on the talk exam)
-7. Go to the docent again to write you the mark you got in the student book
+7. Go to the docent again to give you the mark you got in the student book
 8. That's it! You passed!
