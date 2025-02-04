@@ -1,5 +1,5 @@
 # First Semester
-**(Update 1 - 25.12.2024)**
+**(Update 1 - 25.12.2024) - Merry Christmas**
 
 More info, tasks, exercises, notes and other stuff soon.
 
