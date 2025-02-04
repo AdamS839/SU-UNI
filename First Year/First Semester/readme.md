@@ -8,7 +8,7 @@ More info, tasks, exercises, notes and other stuff soon.
 - **Algebra** - (Updated readme)
 - **Discrete Structures** - (Updated readme) 
 - **Calculus** - (Control exams, Updated readme)
-- **Introduction to Programming** - (Added practicum weeks up to now)
+- **Introduction to Programming** - (Added practicum weeks up to *Update 1*)
 
 ## Work in Progress
 
