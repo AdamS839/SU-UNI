@@ -1,9 +1,9 @@
 
-# C++ Introduction
+# Introduction to Programming
 
 # Overview
 
-It's alright. for now
+Based on the assistant you get
 
 # More Info
 Adding every week worth of exercises in practicums, plus self preparation (not most of the time) from the lectors file with exercises.
