@@ -24,7 +24,7 @@ This repository will remain private until I pass my first semester in FMI.
 
 **Batch updating most of the time.**
 
-### Useful Links
+### Useful Links *only public sites*
 
 Online library: [Click here](https://debian.fmi.uni-sofia.bg/study/index.html) \
 Skelet Site: [Click here](https://skelet.ludost.net/)
