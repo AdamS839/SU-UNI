@@ -23,3 +23,7 @@ This repository will remain private until I pass my first semester in FMI.
 ### Planning time
 
 **Batch updating most of the time.**
+
+### Useful Links
+
+Online library: [Click here](https://debian.fmi.uni-sofia.bg/study/index.html)
