@@ -1,14 +1,15 @@
 # First Semester
 **(Update 1 - 25.12.2024) - Merry Christmas**
+**(Update 2 - 08.02.2025)**
 
-More info, tasks, exercises, notes and other stuff soon.
+Added most of the things, awaiting calculus - 14.02
 
 ## Contents
 
-- **Algebra** - (Updated readme)
-- **Discrete Structures** - (Updated readme) 
+- **Algebra** - (Finished)
+- **Discrete Structures** - (Finished) 
 - **Calculus** - (Control exams, Updated readme)
-- **Introduction to Programming** - (Added practicum weeks up to *Update 1*)
+- **Introduction to Programming** - (Finished)
 
 ## Work in Progress
 
