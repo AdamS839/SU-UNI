@@ -10,11 +10,7 @@ Added most of the things, awaiting calculus - 14.02
 - **Discrete Structures** - (Finished) 
 - **Calculus** - (Control exams, Updated readme)
 - **Introduction to Programming** - (Finished)
-
-## Work in Progress
-
-Repository in development.
-
+  
 ---
 
 ### About
