@@ -1,5 +1,5 @@
 # First Semester
-**(Update 1 - 25.12.2024) - Merry Christmas**
+**(Update 1 - 25.12.2024) - Merry Christmas** \
 **(Update 2 - 08.02.2025)**
 
 Added most of the things, awaiting calculus - 14.02
