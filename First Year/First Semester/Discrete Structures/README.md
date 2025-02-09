@@ -3,6 +3,7 @@
 
 ## Overview
 
+#1 Combinatorics and Graph hater
 Theory not so bad, excercise after seminars and you'll be fine
 
 ### Links
