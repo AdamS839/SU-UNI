@@ -19,7 +19,8 @@ This repository will remain private until I pass my first semester in FMI.
 
 ### Planning time
 
-**Batch updating most of the time.**
+**Batch updating most of the time.** \
+Little text updates
 
 ### Useful Links *only public sites*
 
