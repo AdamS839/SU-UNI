@@ -8,7 +8,7 @@ Added most of the things, awaiting calculus - 14.02
 
 - **Algebra** - (Finished)
 - **Discrete Structures** - (Finished) 
-- **Calculus** - (Control exams, Updated readme)
+- **Calculus** - (Awaiting Theory Exam)
 - **Introduction to Programming** - (Finished)
   
 ---
