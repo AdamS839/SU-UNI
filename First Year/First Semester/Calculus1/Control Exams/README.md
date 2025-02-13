@@ -4,7 +4,7 @@ Control Exams are very important (but not mandatory) as they evaluate the unders
 
 ## Exam Structure
 
-- Each exam includes **4 problems**, that one head assistant evaluates and **1 theoretical question**, which is evaluated directly by the professor.
+- Each exam includes **4 problems** - the head assistant evaluates and **1 theoretical question**, which is evaluated directly by the professor.
 
 ## Scoring System
 
