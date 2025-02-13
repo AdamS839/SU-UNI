@@ -15,12 +15,11 @@ Added most of the things, awaiting calculus - 14.02
 
 ### About
 
-This repository will remain private until I pass my first semester in FMI.
+Repository for uploading materials for first semester in FMI.
 
 ### Planning time
 
-**Batch updating most of the time.** \
-Little text updates
+**ALMOST DONE**
 
 ### Useful Links *only public sites*
 
