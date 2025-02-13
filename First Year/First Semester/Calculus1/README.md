@@ -9,4 +9,4 @@ Calculus 1 is about understanding limits of sequences, series, functions, and th
 Study materials include lecture notes and the professor's presentations, which will be posted in an easily accessible location.
 
 ## Additional Resources
-For a general understanding of the subject, watch the 3Blue1Brown video playlist about the essence of calculus: [Playlist here](https://youtu.be/WUvTyaaNkzM?si=xIQ7rKAmK9ZT_GhM)
+For a general understanding of the subject, watch the 3Blue1Brown video playlist about the essence of calculus: [**Playlist here**](https://youtu.be/WUvTyaaNkzM?si=xIQ7rKAmK9ZT_GhM)
