@@ -1,7 +1,7 @@
 # First Semester
 **(Update 1 - 25.12.2024) - Merry Christmas** \
 **(Update 2 - 08.02.2025)** \
-**Final update to this directory - 16.02.2025**
+**(Update 3(Final) - 16.02.2025)**
 
 ## Contents
 
