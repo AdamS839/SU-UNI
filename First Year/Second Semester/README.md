@@ -13,11 +13,14 @@
 
 ---
 
-## About
+### About
+
 Reposity for uploading material for second semester.
 
-## Planning time
+### Planning time
+
 Batch uploading or fixing/writing md files.
 
-## Useful Links
+### Useful Links
+
 *soon*
