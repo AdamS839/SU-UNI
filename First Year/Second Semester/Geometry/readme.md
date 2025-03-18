@@ -12,7 +12,11 @@ There is a folder that contain problems for solving.
 ---
 
 ## Conspect
-***will be added one by one***
+***will be batch added***
 
 1. Vectors
 2. Linear operations with vectors
+3. Conditions for collinearity and coplanarity of vectors
+4. Conditions for collinearity and coplanarity of vectors by coordinates
+5. Scalar product in geometric space
+6. Orientation
