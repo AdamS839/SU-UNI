@@ -6,11 +6,11 @@
 
 ## Contents:
 
-- Geometry - (added problems for vectors)
+- Geometry - (adding problems)
 - Calculus2 - (*soon*)
 - OOP - (*soon*)
 - LAC - (*soon*)
-- English - (mark formation structure)
+- English - (presentation done)
 
 ---
 
