@@ -40,7 +40,7 @@ public:
         // first = temp->next;
 
 
-        // DO LATER CMON MAN
+        // DO LATER 
         if (!first) return;
         Nodes<T>* temp = first;
         first = first->next;
