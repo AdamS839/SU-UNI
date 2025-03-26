@@ -6,10 +6,10 @@
 
 ## Contents:
 
-- Geometry - (adding problems)
+- Geometry - (adding problems and notes)
 - Calculus2 - (*soon*)
 - OOP - (*soon*)
-- LAC - (*soon*)
+- LAC - (*adding theory, problems and notes*)
 - English - (presentation done)
 
 ---
