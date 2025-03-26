@@ -24,4 +24,4 @@ Batch uploading or fixing/writing md files.
 
 ### Useful Links
 
-*soon*
+LAC Problems: [**Click here**](https://store.fmi.uni-sofia.bg/fmi/logic/eai.html)
