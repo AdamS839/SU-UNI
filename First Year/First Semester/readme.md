@@ -26,5 +26,5 @@ Repository for uploading materials for first semester in FMI.
 
 ### Useful Links *only public sites*
 
-Online library: [Click here](https://debian.fmi.uni-sofia.bg/study/index.html) \
-Skelet Site: [Click here](https://skelet.ludost.net/)
+Online library: [**Click here**](https://debian.fmi.uni-sofia.bg/study/index.html) \
+Skelet Site: [**Click here**](https://skelet.ludost.net/)
