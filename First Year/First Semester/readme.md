@@ -1,5 +1,5 @@
 # First Semester
-### 2024/2025
+### 01.10.2024/14.02.2025
 
 ## Major Update Dates:
 
