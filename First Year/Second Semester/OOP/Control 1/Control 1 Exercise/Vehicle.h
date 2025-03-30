@@ -27,11 +27,15 @@ public:
     }
 
     Vehicle& operator=(const Vehicle &other){
-        if(this == &other) return *this;
-        regnum = other.regnum;
-        clear();
-        copy(other);
+        if(this != &other){
+            regnum = other.regnum;
+            clear();
+            copy(other);
+        }
         return *this;
     }
 
+    const Registration& getRegnum() const { return regnum; }
+
+    const char* getDescription() const { return description; }
 };

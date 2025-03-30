@@ -6,13 +6,23 @@ private:
     char rnumber[9];
     bool isValid(const char* str){
         std::size_t len = std::strlen(str);
-        if(len != 8) return false;
+        if(len != 8 && len != 7) return false;
         int i = 0;
-        while (i < 8){
-            if((i < 2 || i >= 6) && !std::isalpha(str[i])) return false;
-            if(i >= 2 && i < 6 && !std::isdigit(str[i])) return false;
+
+        // WORK ONLY FOR this format (d - digit, l - letter) : llddddll
+
+        // while (i < len){
+        //     if((i < 2 || i >= 6) && !std::isalpha(str[i])) return false;
+        //     if(i >= 2 && i < 6 && !std::isdigit(str[i])) return false;
+        //     ++i;
+        // }
+
+        while (i < len) {
+            if ((i == 0 || (len == 8 && i == 1) || i >= len - 2) && !std::isalpha(str[i])) return false; 
+            if ((i >= (len == 8 ? 2 : 1) && i < len - 2) && !std::isdigit(str[i])) return false;
             ++i;
         }
+
         return true;
     }
 public:
