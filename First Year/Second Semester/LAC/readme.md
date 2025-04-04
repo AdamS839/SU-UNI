@@ -1,4 +1,4 @@
-# Languages, automation and counting
+# Languages, automata and computation
 
 ## Overview
 
