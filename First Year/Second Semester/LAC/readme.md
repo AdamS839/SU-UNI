@@ -2,7 +2,7 @@
 
 ## Overview
 
-Lections are hard to understand, but seminars and exercises are not that bad - very long tho.
+Lections are hard to understand, seminars and exercises are very long.
 
 ## Materials
 
