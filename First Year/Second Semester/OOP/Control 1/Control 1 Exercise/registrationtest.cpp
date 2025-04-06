@@ -90,3 +90,26 @@ TEST_CASE("VehicleList additional tests") {
     CHECK(list.find(Registration("B8765CD")) != nullptr);
     CHECK(list.find(Registration("Z9999ZZ")) == nullptr);
 }
+
+
+int main() {
+
+    std::size_t vehicleNumber;
+    std::cin >> vehicleNumber;
+
+    char* description;
+
+    VehicleList list(vehicleNumber);
+
+    for (std::size_t i = 0; i < vehicleNumber; ++i)
+    {
+        char regnum[9];
+        std::cin.getline(regnum, 9, '\n');
+        std::cin.getline(description, std::strlen(description)+1, '\n');
+        
+    }
+    
+
+
+    return 0;
+}

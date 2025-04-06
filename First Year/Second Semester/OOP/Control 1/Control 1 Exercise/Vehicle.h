@@ -1,3 +1,5 @@
+#ifndef __Vehicle_HPP
+#define __Vehicle_HPP
 #include <iostream>
 #include "Registration.h"
 
@@ -39,3 +41,5 @@ public:
 
     const char* getDescription() const { return description; }
 };
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef __Registration_HPP
+#define __Registration_HPP
 #include <iostream>
 #include <cstring>
 
@@ -47,3 +49,5 @@ public:
         return rnumber;
     }
 };
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef __VehicleList_HPP
+#define __VehicleList_HPP
 #include "Vehicle.h"
 
 class VehicleList{
@@ -81,3 +83,5 @@ public:
         return nullptr;
     }
 };
+
+#endif
