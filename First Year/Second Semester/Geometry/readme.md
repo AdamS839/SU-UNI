@@ -21,3 +21,6 @@ There is a folder that contain problems for solving.
 5. Scalar product in geometric space
 6. Orientation
 7. Vector product
+8. Mixed product
+9. Affine space
+10. Affine subspace
