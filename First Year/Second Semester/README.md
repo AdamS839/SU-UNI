@@ -10,7 +10,7 @@
 - Calculus2 - (*soon*)
 - OOP - (*soon*)
 - LAC - (*adding theory, problems and notes*)
-- English - (presentation done)
+- English - (presentation and essay done)
 
 ---
 
