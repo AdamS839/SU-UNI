@@ -11,3 +11,8 @@ Adding theory questions and group notes
 ## Useful Sites
 
 Link for past year tests: [**Click here**](https://store.fmi.uni-sofia.bg/fmi/logic/eai.html)
+
+
+---
+### Lector
+Docent Gerdzhikov
