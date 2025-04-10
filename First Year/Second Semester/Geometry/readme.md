@@ -24,3 +24,8 @@ There is a folder that contain problems for solving.
 8. Mixed product
 9. Affine space
 10. Affine subspace
+
+
+---
+### Lector
+Docent Aleksandrov
