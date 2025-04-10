@@ -8,3 +8,8 @@ Again, like first semester, the professor uploads the presentations in an easily
 
 ## Additional Resources
 Again, if you didn't watch 3Blue1Brown video about the essence of calculus, go watch it: [**playlist here**](https://www.youtube.com/watch?v=WUvTyaaNkzM&ab_channel=3Blue1Brown)
+
+---
+
+### Lector
+Professor, doctor of science Draganov
