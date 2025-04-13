@@ -28,4 +28,4 @@ There is a folder that contain problems for solving.
 
 ---
 ### Lector
-Docent Aleksandrov
+Docent Bogdan Aleksandrov
