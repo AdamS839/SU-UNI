@@ -15,4 +15,4 @@ Link for past year tests: [**Click here**](https://store.fmi.uni-sofia.bg/fmi/lo
 
 ---
 ### Lector
-Docent Gerdzhikov
+Docent Stefan Gerdzhikov
