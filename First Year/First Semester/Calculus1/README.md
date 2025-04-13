@@ -8,3 +8,9 @@ Study materials include lecture notes and the professor's presentations, which w
 
 ## Additional Resources
 For a general understanding of the subject, watch the 3Blue1Brown video playlist about the essence of calculus: [**Playlist here**](https://youtu.be/WUvTyaaNkzM?si=xIQ7rKAmK9ZT_GhM)
+
+
+---
+## Lector
+
+Professor, Doctor of science Borislav Draganov
