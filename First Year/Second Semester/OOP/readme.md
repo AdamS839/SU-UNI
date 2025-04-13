@@ -11,4 +11,4 @@ I'll try to upload exercises if i have time.
 
 ---
 ### Lector
-Docent Georgiev
+Docent Kalin Georgiev
