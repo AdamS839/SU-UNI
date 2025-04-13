@@ -16,4 +16,4 @@ Professor Ronnie Levy DIS2 Textbook: [**click here**](https://intranet.fmi.uni-s
 ---
 
 ### Lector
-Professor, Doctor of science Draganov
+Professor, Doctor of science Borislav Draganov
