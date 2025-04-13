@@ -12,4 +12,4 @@ Skelet Site (alot of problems for solving/check for old tests): [**Click here**]
 ---
 ## Lector
 
-Doctor, head assistant Georgi Georgiev - -#Skeleta
+Doctor, head assistant Georgi Georgiev - Skeleta
