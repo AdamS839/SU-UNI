@@ -11,7 +11,7 @@ Again, if you didn't watch 3Blue1Brown video about the essence of calculus, go w
 
 ## Links
 
-Professor Ronnie Levy DIS2 Textbook: [**click here**](https://intranet.fmi.uni-sofia.bg/index.php/s/O8f9P0uMxawEeZM)
+Professor Ronnie Levy Calculus 2 Textbook: [**click here**](https://intranet.fmi.uni-sofia.bg/index.php/s/O8f9P0uMxawEeZM)
 
 ---
 
