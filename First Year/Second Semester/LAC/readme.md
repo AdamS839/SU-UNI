@@ -12,6 +12,9 @@ Adding theory questions and group notes
 
 Link for past year tests: [**Click here**](https://store.fmi.uni-sofia.bg/fmi/logic/eai.html)
 
+### Also check out
+Knuth Morris Pratt Algorithm (KMP Algorithm)
+
 
 ---
 ### Lector
