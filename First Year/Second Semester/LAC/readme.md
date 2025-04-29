@@ -14,7 +14,7 @@ Link for past year tests and notes from other docent: [**Click here**](https://s
 
 ### Also check out
 
-Knuth Morris Pratt Algorithm (KMP Algorithm)
+Knuth Morris Pratt Algorithm (KMP Algorithm) \
 Earley Method
 
 ---
