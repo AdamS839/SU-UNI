@@ -2,7 +2,7 @@
 
 ## Overview
 
-Lections are hard to understand, seminars and exercises are very long.
+Hard lections, hard topics. Problems with proofs are very long and hard to memorize.
 
 ## Materials
 
