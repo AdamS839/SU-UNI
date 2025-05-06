@@ -12,7 +12,8 @@ There is a folder that contain problems for solving.
 ---
 
 ## Conspect
-***will be batch added***
+***will be batch added*** \
+20 conspect topics
 
 1. Vectors
 2. Linear operations with vectors
