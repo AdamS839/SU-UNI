@@ -12,7 +12,6 @@ There is a folder that contain problems for solving.
 ---
 
 ## Conspect
-***will be batch added*** \
 20 conspect topics
 
 1. Vectors
@@ -25,6 +24,15 @@ There is a folder that contain problems for solving.
 8. Mixed product
 9. Affine space
 10. Affine subspace
+11. Affine Coordination Systems
+12. Changing the coordination system
+13. Defining a set with equations and with parametric equations
+14. Parametric equations of an affine subspaceGeneral equation of an affine subspace
+15. Mutual position of two affine subspaces
+16. Line segments and half-spaces
+17. Normal vectors of an affine subspace. Distance between affine subspaces
+18. Affine images, samenesses, similarities
+19. Figures of second power
 
 
 ---
