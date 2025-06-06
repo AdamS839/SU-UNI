@@ -37,9 +37,9 @@ There is a folder that contain problems for solving.
 
 
 ### Useful Site:
-If you struggle to solve problems I advice you to use geogebra:
-GeoGebra: [**click here**](https://www.geogebra.org/)
-GeoGebra 3D: [**click here**](https://www.geogebra.org/3d)
+If you struggle to solve problems I advice you to use geogebra:\
+GeoGebra: [**click here**](https://www.geogebra.org/)\
+GeoGebra 3D: [**click here**](https://www.geogebra.org/3d)\
 
 ---
 ### Lector
