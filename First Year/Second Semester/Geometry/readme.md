@@ -28,12 +28,18 @@ There is a folder that contain problems for solving.
 12. Changing the coordination system
 13. Defining a set with equations and with parametric equations
 14. Parametric equations of an affine subspaceGeneral equation of an affine subspace
-15. Mutual position of two affine subspaces
-16. Line segments and half-spaces
-17. Normal vectors of an affine subspace. Distance between affine subspaces
-18. Affine images, samenesses, similarities
-19. Figures of second power
+15. General equation of an affine subspace
+16. Mutual position of two affine subspaces
+17. Line segments and half-spaces
+18. Normal vectors of an affine subspace. Distance between affine subspaces
+19. Affine images, samenesses, similarities
+20. Figures of second power
 
+
+### Useful Site:
+If you struggle to solve problems I advice you to use geogebra:
+GeoGebra: [**click here**](https://www.geogebra.org/)
+GeoGebra 3D: [**click here**](https://www.geogebra.org/3d)
 
 ---
 ### Lector
