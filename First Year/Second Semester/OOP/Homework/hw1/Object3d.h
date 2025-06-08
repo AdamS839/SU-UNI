@@ -70,10 +70,10 @@ private:
             else if (faceCount > 0) { // взимаме върховете, четем индексите на върховете от str и ги добавяме към face
                 std::size_t pos = 0;
                 std::size_t next_pos = 0;
-                int expectedVertices = std::stoi(str.substr(pos), &next_pos);
+                int allVertices = std::stoi(str.substr(pos), &next_pos);
                 pos += next_pos;
                 Face face;
-                for (int i = 0; i < expectedVertices; ++i) {
+                for (int i = 0; i < allVertices; ++i) {
                     int index = std::stoi(str.substr(pos), &next_pos);
                     pos += next_pos;
                     face.indices.push_back(index);
