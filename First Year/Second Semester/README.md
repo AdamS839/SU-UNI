@@ -2,14 +2,14 @@
 ### 2024/2025
 
 ## Major Update Dates:
-*soon*
+*08.06.2025* - Added OOP and renamed readme
 
 ## Contents:
 
-- Geometry - (adding problems and notes)
-- Calculus2 - (*soon*)
-- OOP - (*soon*)
-- LAC - (*adding theory, problems and notes*)
+- Geometry - (Everything added)
+- Calculus2 - (Almost everything)
+- OOP - (Everything added)
+- LAC - (Everything added)
 - English - (presentation and essay done)
 
 ---
