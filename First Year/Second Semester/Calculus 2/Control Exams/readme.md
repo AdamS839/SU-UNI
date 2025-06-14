@@ -10,6 +10,6 @@ Like in first semester, there will be 4 control exams and if you accumulate 300 
 - 1 theoretical question worth 4 points
 - If you accumulate 300/440 points you can skip the task exam
 
-### Control exam score
+### Control exam №4 score
 
 106/110
