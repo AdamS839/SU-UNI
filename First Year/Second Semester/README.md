@@ -7,10 +7,10 @@
 ## Contents:
 
 - Geometry - (Everything added)
-- Calculus2 - (Almost everything)
+- Calculus2 - (Everything added)
 - OOP - (Everything added)
 - LAC - (Everything added)
-- English - (presentation and essay done)
+- English - (Everything added)
 
 ---
 
