@@ -48,7 +48,8 @@ Link for past year tests and notes from the docent of KN2: [**Click here**](http
 ### Also check out
 
 Knuth Morris Pratt Algorithm (KMP Algorithm) \
-Earley Method
+Earley Method \
+Pumping lemma for Reg Languages and CFL
 
 ---
 ### Lector
