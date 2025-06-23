@@ -4,7 +4,7 @@
 ## Major Update Dates and changes:
 *08.06.2025* - Added OOP and renamed readme \
 *22.06.2025* - Added Calculus Theory Exam, made changes to readme files in dirs for info \
-*final update - very soon*
+*23.06.2025*
 
 ## Contents:
 
@@ -22,7 +22,7 @@ Reposity for uploading materials for second semester.
 
 ### Planning time
 
-Almost everything added
+DONE
 
 ### Useful Links
 
