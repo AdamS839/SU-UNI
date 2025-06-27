@@ -30,5 +30,6 @@ LAC Problems: [**Click here**](https://store.fmi.uni-sofia.bg/fmi/logic/eai.html
 
 ### Useful skills to learn for the future
 
-Learn LaTeX: [**click here**](https://www.latex-tutorial.com/tutorials/) \ 
+Learn LaTeX: [**click here**](https://www.latex-tutorial.com/tutorials/)
+
 Site for detexifying LaTeX symbols: [**click here**](https://detexify.kirelabs.org/classify.html)
