@@ -53,4 +53,4 @@ Pumping lemma for Reg Languages and CFL
 
 ---
 ### Lector
-Docent Stefan Gerdzhikov
+Associate professor Stefan Gerdzhikov
