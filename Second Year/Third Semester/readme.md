@@ -11,6 +11,7 @@
 - Data Structures - (*will add monthly*)
 - Functional Programming - (*will add monthly*)
 - Computer English - (ADDED)
+- (*will add more courses later*)
 
 ---
 
@@ -33,3 +34,4 @@ Reposity for uploading materials for third semester. *(will exclude tests or con
 Learn LaTeX: [**click here**](https://www.latex-tutorial.com/tutorials/)
 
 Site for detexifying LaTeX symbols: [**click here**](https://detexify.kirelabs.org/classify.html)
+
