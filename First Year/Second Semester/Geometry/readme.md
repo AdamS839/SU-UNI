@@ -43,4 +43,4 @@ GeoGebra 3D: [**click here**](https://www.geogebra.org/3d)
 
 ---
 ### Lector
-Docent Bogdan Aleksandrov
+Associate professor Bogdan Aleksandrov
