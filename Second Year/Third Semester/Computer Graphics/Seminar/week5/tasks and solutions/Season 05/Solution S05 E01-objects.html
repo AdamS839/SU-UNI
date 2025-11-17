@@ -1,0 +1,69 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			
+			// Този файл само демонстрира обектите, които са използвани
+			// в решението, но без да прилага CSG над тях ... ако трябва
+			// да съм честен, така си направих и илюстрацията в решението
+
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 'white' );
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 16 );
+			camera.lookAt( new THREE.Vector3() );
+
+
+			var group = new THREE.Group();
+			scene.add(group);
+			
+			group.add(
+				new THREE.Mesh(
+					new THREE.CylinderGeometry( 1.5, 1.5, 7, 80 ),
+					new THREE.MeshLambertMaterial({
+						color: 'crimson',
+						transparent: true,
+						opacity: 0.75 })
+			));
+			
+			group.add(
+				new THREE.Mesh(
+					new THREE.CylinderGeometry( 1, 1, 8, 80 ),
+					new THREE.MeshLambertMaterial({ color:'lightgray' })
+			));
+
+						
+			var light = new THREE.PointLight( 'white', 150 );
+			light.position.set( 0, 5, 10 );
+			scene.add( light );
+			
+			
+			function drawFrame( t )
+			{
+				group.rotation.set( t/1000, t/1200, t/1300 );
+				
+				renderer.render( scene, camera );
+			}
+		</script>
+	</body>
+</html>

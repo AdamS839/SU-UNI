@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+			} 
+		}
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+
+			import GUI from 'https://cdn.jsdelivr.net/npm/lil-gui@0.19/+esm';
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+            renderer.shadowMap.enabled = true;
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 60, aspect );
+			camera.position.set( 15, 4, 15 );
+			camera.lookAt( scene.position );
+			
+			const controls = new OrbitControls(camera, renderer.domElement);
+			controls.update();
+
+			var axis = new THREE.AxesHelper( 15 );
+			scene.add( axis );
+
+			var material = new THREE.MeshPhongMaterial();
+            
+            var geometry1 = new THREE.BoxGeometry(10, 10, 7);
+            var cube = new THREE.Mesh(geometry1, material);
+            cube.position.set(0,0,0);
+            scene.add(cube);
+
+            var geometry2 = new THREE.BoxGeometry(7,10,10);
+            var cube2 = new THREE.Mesh(geometry2, material);
+            cube2.position.set(0,0,0);
+            scene.add(cube2);
+
+            var geometry3 = new THREE.BoxGeometry(10,7,10);
+            var cube3 = new THREE.Mesh(geometry3, material);
+            cube3.position.set(0,0,0);
+            scene.add(cube3);
+
+            var geometry4 = new THREE.BoxGeometry(8.5,8.5,8.5);
+            var cube4 = new THREE.Mesh(geometry4, material);
+            cube4.position.set(0,0,0);
+            scene.add(cube4);
+
+			var spotlight = new THREE.SpotLight("white", 400);
+			spotlight.position.set(12, 15, 7);
+			scene.add(spotlight);
+
+            var ambientLight = new THREE.AmbientLight("white", 0.8);
+            scene.add(ambientLight);
+
+            function animate() {
+            requestAnimationFrame( animate );
+            // required if controls.enableDamping or controls.autoRotate are set to true
+            controls.update();
+            renderer.render( scene, camera );
+            }
+            animate();
+
+			function drawFrame( t )
+			{
+				scene.rotation.y = t/1000;
+				renderer.render( scene, camera );
+			}
+		</script>
+	</body>
+</html>

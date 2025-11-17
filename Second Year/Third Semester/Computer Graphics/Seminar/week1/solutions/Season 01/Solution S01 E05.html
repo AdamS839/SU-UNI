@@ -1,0 +1,46 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			
+			// Задача: кубът да стане с форма и цвят на тухла
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 3, 3, 8 );
+			camera.lookAt( scene.position );
+
+			// Променяме размерите на геометричната форма, която е "кутия",
+			// да са 2x1x4 единици, а цветът на материала правим "коралов"
+			var geometry = new THREE.BoxGeometry( 2, 1, 4 );
+			var material = new THREE.MeshPhongMaterial( {color: 'coral'} );
+			var cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+
+			var light = new THREE.PointLight( 'white', 10 );
+			light.position.set( 2, 2, 3 );
+			scene.add( light );
+
+			renderer.render(scene, camera);
+			
+		</script>
+	</body>
+</html>

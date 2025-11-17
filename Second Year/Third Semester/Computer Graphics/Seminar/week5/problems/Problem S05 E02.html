@@ -1,0 +1,96 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+				"csg/": "https://cdn.jsdelivr.net/gh/looeee/threejs-csg@main/src/CSG/"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+			import {CSG} from "csg/CSG.js";
+			
+			
+			// Задача: конструирайте златен осмоъгълен
+			// пепелник-сувенир за четирима. 
+
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 'midnightblue' );
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 8 );
+			camera.lookAt( new THREE.Vector3() );
+
+			var controls = new OrbitControls(camera, renderer.domElement);
+			controls.update();
+		
+			// Пепелник (за момента е цилиндър,
+			// но вие ще го оформите на пепелник)
+			var geometry = new THREE.CylinderGeometry( 1.75, 2, 1, 8 );
+			var ashTray = new THREE.Mesh( geometry );
+			// scene.add( ashTray );
+
+			var geometry = new THREE.CylinderGeometry(1.5, 1.5, 1, 8);
+			var ashRemoved = new THREE.Mesh(geometry);
+			ashRemoved.position.set(0,0.2,0);
+
+			
+			var geometry = new THREE.CylinderGeometry(0.3, 0.3, 4, 64);
+			var cigarPlace = new THREE.Mesh(geometry);
+			cigarPlace.position.set(0, 0.5, 0);
+			cigarPlace.rotation.set(Math.PI/2,0,Math.PI/180*23);
+			// scene.add(cigarPlace);
+
+			var geometry = new THREE.CylinderGeometry(0.3, 0.3, 4, 64);
+			var cigarPlace2 = new THREE.Mesh(geometry);
+			cigarPlace2.position.set(0, 0.5, 0);
+			cigarPlace2.rotation.set(Math.PI/2,0,-Math.PI/180*(23+45));
+			// scene.add(cigarPlace2);
+
+			var csg = new CSG();
+			csg.subtract([ashTray, ashRemoved, cigarPlace, cigarPlace2]);
+			
+			var ashtray = csg.toMesh();
+			ashtray.material = new THREE.MeshPhongMaterial( {color:'gold'} );
+			scene.add(ashtray);
+			
+			
+			
+			var light = new THREE.PointLight( 'white', 150 );
+			light.position.set( 0, 5, 10 );
+			scene.add( light );
+			
+			
+			function drawFrame( t )
+			{
+				// въртим пепелника
+				// ashTray.rotation.x = 0.3+0.2*Math.sin(ashTray.rotation.y);
+				// ashTray.rotation.y = t/1000;
+				
+				renderer.render( scene, camera );
+			}
+			function animate() {
+                requestAnimationFrame( animate );
+                controls.update();
+                renderer.render( scene, camera );
+            }
+            animate();
+		</script>
+	</body>
+</html>

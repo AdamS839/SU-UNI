@@ -1,0 +1,128 @@
+<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+			} 
+		}
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+
+			import GUI from 'https://cdn.jsdelivr.net/npm/lil-gui@0.19/+esm';
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+            renderer.shadowMap.enabled = true;
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 60, aspect );
+			camera.position.set( 2, 3.5, 4 );
+			camera.lookAt( scene.position );
+			
+			const orbit = new OrbitControls(camera, renderer.domElement);
+			orbit.update();
+
+			var planeGeometry = new THREE.PlaneGeometry(5, 14);
+            var planeMaterial = new THREE.MeshPhongMaterial({color: "gray", side: THREE.DoubleSide});
+            var plane = new THREE.Mesh(planeGeometry, planeMaterial)
+            plane.rotation.x = - Math.PI / 2;
+            scene.add(plane);
+			plane.receiveShadow = true;
+
+            var gridHelper = new THREE.GridHelper(5, 10);
+            scene.add(gridHelper);
+
+            var cubeGeometry = new THREE.BoxGeometry(1,1,1);
+            var cubeMaterial = new THREE.MeshPhongMaterial({color: 0x44aa88, flatShading: false});
+            var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            cube.position.set(0, 1, 0);
+            scene.add(cube);
+			cube.castShadow = true;
+
+            var sphereGeometry = new THREE.SphereGeometry(0.3, 40, 40);
+            var sphereMaterial = new THREE.MeshPhongMaterial({color: "red", wireframe: false});
+            var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            sphere.position.set(0,2, -2);
+            scene.add(sphere);
+			sphere.castShadow = true;
+
+			
+
+			// var light = new THREE.PointLight( 'white', 10 );
+			// light.position.set( 2, 2, 3 );
+			// scene.add( light );
+
+            // var ambientLight = new THREE.AmbientLight(0x333333);
+            // scene.add(ambientLight);
+
+			var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.9);
+			scene.add(ambientLight);
+
+            var directionalLight = new THREE.DirectionalLight(0xFFFFFF, 3);
+            scene.add(directionalLight);
+            directionalLight.position.set(-1, 2, 4);
+			directionalLight.castShadow = true;
+
+            // var directionalLight2 = new THREE.DirectionalLight(0xFFFFFF, 3);
+            // scene.add(directionalLight2);
+            // directionalLight2.position.set(-2, 2, -4);
+
+            var dLightHelper = new THREE.DirectionalLightHelper(directionalLight);
+            scene.add(dLightHelper);
+
+            // var dLightHelper2 = new THREE.DirectionalLightHelper(directionalLight2);
+            // scene.add(dLightHelper2);
+            
+			var axis = new THREE.AxesHelper( 5 );
+			scene.add( axis );
+
+			// function animate() {
+			// requestAnimationFrame(animate);
+			// orbit.update();
+			// renderer.render(scene, camera);
+			// }
+			// animate();
+
+			// GUI Setup
+
+			var gui = new GUI();
+			var ambFolder = gui.addFolder("Ambient Light");
+			ambFolder.add(ambientLight, "intensity", 0, 2, 0.01);
+			ambFolder.addColor({color: ambientLight.color.getHex()}, "color").onChange(c => {ambientLight.color.set(c);});
+			
+			var dirFolder = gui.addFolder("Directional Light");
+			dirFolder.add(directionalLight, "intensity", 0, 5, 0.01);
+			dirFolder.add(directionalLight.position, "x", -10, 10);
+			dirFolder.add(directionalLight.position, "y", -10, 10);
+			dirFolder.add(directionalLight.position, "z", -10, 10);
+			dirFolder.addColor({ color: directionalLight.color.getHex() }, "color").onChange(c => {directionalLight.color.set(c);});
+
+            function render(time) {
+                time *= 0.001;  // convert time to seconds
+                
+                cube.rotation.x = time;
+                cube.rotation.y = time;
+                cube.rotation.z = time;
+                
+                renderer.render(scene, camera);
+                
+                requestAnimationFrame(render);
+            }   
+            requestAnimationFrame(render);
+		</script>
+	</body>
+</html>

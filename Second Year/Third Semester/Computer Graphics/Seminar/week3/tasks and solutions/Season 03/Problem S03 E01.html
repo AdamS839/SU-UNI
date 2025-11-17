@@ -1,0 +1,45 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			// Задача: опитайте се да замените куба със сфера,
+			// която да е с гладка повърхност
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 3, 3, 8 );
+			camera.lookAt( scene.position );
+
+			var geometry = new THREE.BoxGeometry( 2, 2, 2 );
+			var material = new THREE.MeshPhongMaterial();
+			var cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+
+			var light = new THREE.PointLight( 'white', 200 );
+			light.position.set( 3, 3, 8 );
+			scene.add( light );
+
+			renderer.render( scene, camera );
+			
+		</script>
+	</body>
+</html>

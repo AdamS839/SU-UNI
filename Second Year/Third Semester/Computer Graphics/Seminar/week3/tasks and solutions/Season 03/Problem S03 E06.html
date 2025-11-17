@@ -1,0 +1,72 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			// Задача: направете реотан. По-долу има код,
+			// който демонстрира как се дефинира собствена
+			// крива, която може да се използва за направа
+			// на намотките на реотана.
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 30 );
+			camera.lookAt( scene.position );
+
+			
+			// Създаваме клас MyCurve, който ще дефинира кривата
+			// на реотана. Функцията getPoint изчислява точка от кривата.
+			class MyCurve extends THREE.Curve
+			{
+				getPoint( t )
+				{ // метод, който изчислява точка от кривата в позиция t, като t=[0,1]
+					var x = 6*Math.cos(2*t);
+					var y = 6*Math.sin(2*t);
+
+					return new THREE.Vector3( x, y, 0 );
+				}
+			}
+			// Естествено, трябва да смените това отгоре, 
+			// в момента то генерира обикновена кръгова дъга
+
+			// Създаваме тръбовидна форма, използвайки инстанция 
+			// на нашата крива MyCurve.
+			var geometry = new THREE.TubeGeometry( new MyCurve(), 60, 2, 16 );
+			var material = new THREE.MeshPhongMaterial();
+			var surface = new THREE.Mesh( geometry, material );
+			scene.add( surface );
+
+
+			var light = new THREE.PointLight( 'white', 700 );
+			light.position.set( 0, 0, 20 );
+			scene.add( light );
+			
+			function drawFrame( t )
+			{
+				surface.rotation.x = t/1000;
+				surface.rotation.y = t/1200;
+				renderer.render( scene, camera );
+			}
+	
+		</script>
+	</body>
+</html>

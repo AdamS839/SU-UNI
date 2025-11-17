@@ -1,0 +1,104 @@
+(define (map1 f l)
+  (if (null? l) `()
+      (cons (f (car l)) (map1 f (cdr l)))))
+
+(define (filter p? lst)
+  (cond ((null? lst) '())
+        ((p? (car lst)) (cons (car lst) (filter p? (cdr lst))))
+        (else (filter p? (cdr lst)))))
+
+; foldr and foldl for lists
+
+(define (foldr operation null_value lst)
+  (if (null? lst) null_value
+      (operation (car lst)
+          (foldr operation null_value (cdr lst)))))
+
+(define (foldl operation null_value lst)
+  (if (null? lst) null_value
+      (foldl operation (operation null_value (car lst)) (cdr lst))))
+
+(define (>0? x) (> x 0))
+(define (>x? y) (> y x))
+
+; problem 1
+
+(define (at l n)d
+  (cond ((zero? n) (car l))
+        ((null? l) "empty list")
+        (else (at (cdr l) (- n 1)))))
+
+
+; problem 2
+
+(define (take n l)
+  (cond ((zero? n) `())
+        ((null? l) "empty list")
+        (else (cons (car l) (take (- n 1) (cdr l))))))
+
+; problem 3
+(define (append1 l1 l2)
+  (cond ((null? l1) (cons (car l2) (cdr l2)))
+        ((null? l2) (cons (car l1) (cdr l1)))
+        (else (cons (car l1) (append1 (cdr l1) l2)))))
+
+; problem 4
+
+(define (all? p? lst)
+  (cond ((null? lst) #t)
+        (else (and (p? (car lst)) (all? p? (cdr lst))))))
+
+(define (all2? p? lst)
+  (equal? (filter p? lst) lst))
+
+(define (any? p? lst)
+  (cond ((null? lst) #t)
+        (else (or (p? (car lst)) (any? p? (cdr lst))))))
+
+(define (any2? p? lst)
+  (null? (filter p? lst)))
+
+; problem 5
+
+(define (zipWith op l1 l2)
+  (cond ((null? l1) `())
+        ((null? l2) `())
+        (else (cons (op (car l1) (car l2)) (zipWith op (cdr l1) (cdr l2))))))
+
+(define (zip l1 l2)
+  (cond ((null? l1) `())
+        ((null? l2) `())
+        (else (cons (cons (car l1) (car l2)) (zipWith cons (cdr l1) (cdr l2))))))
+
+(define (zipWith2 op l1 l2)
+  (map1 (lambda (double) (op (car double) (cdr double))) (zip l1 l2)))
+
+(define (zip2 l1 l2)
+  (map1 (lambda (x) (cons (car x) (cdr x))) (zipWith cons l1 l2)))
+
+; problem 6
+
+(define (sorted? lst)
+  (or (null? lst) (null? (cdr lst)) (and (<= (car lst) (cadr lst)) (sorted? (cdr lst)))))
+
+; problem 7
+
+; length
+
+(define (length1 lst)
+  (foldr (lambda (x acc) (+ 1 acc)) 0 lst))
+
+(define (length2 lst)
+  (foldl (lambda (acc x) (+ acc 1)) 0 lst))
+
+; all?
+
+
+
+
+
+
+
+
+
+  

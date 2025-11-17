@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+			} 
+		}
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+            renderer.shadowMap.enabled = true;
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 60, aspect );
+			camera.position.set( -10.5, 1.5, 11 );
+			camera.lookAt( scene.position );
+			
+			var controls = new OrbitControls(camera, renderer.domElement);
+			controls.update();
+
+			var axes = new THREE.AxesHelper(10);
+            scene.add(axes);
+
+            function placeSphere(radius, width, height, color, x, y, z){
+                var geometry = new THREE.SphereGeometry(radius, width, height);
+                var material = new THREE.MeshPhongMaterial({color: color});
+                var sphere = new THREE.Mesh(geometry, material);
+                sphere.position.set(x,y,z);
+                scene.add(sphere);
+            }
+
+            function createCylinder(rTop, rBot, height, segments, color, x, y, z){
+                var geometry = new THREE.CylinderGeometry(rTop, rBot, height, segments);
+                var material = new THREE.MeshPhongMaterial({color: color});
+                var object = new THREE.Mesh(geometry, material);
+                object.position.set(x,y - height/2,z);
+                scene.add(object);
+            }
+
+            placeSphere(3, 40, 40, "white", 0,0 ,0);
+
+            var geometry = new THREE.TorusGeometry(3.5, 1);
+            var material = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
+            var torus = new THREE.Mesh(geometry, material);
+            scene.add(torus);
+
+            var geometry = new THREE.TorusGeometry(4.5,0.4);
+            scene.add(new THREE.Mesh(geometry, material));
+
+            var directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1.4);
+            directionalLight.position.set(10, 3, 15);
+            scene.add(directionalLight);
+
+            var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.2);
+            scene.add(ambientLight);
+
+            // ordit controls movement function
+            function animate() {
+                requestAnimationFrame( animate );
+                controls.update();
+                renderer.render( scene, camera );
+            }
+            animate();
+		</script>
+	</body>
+</html>

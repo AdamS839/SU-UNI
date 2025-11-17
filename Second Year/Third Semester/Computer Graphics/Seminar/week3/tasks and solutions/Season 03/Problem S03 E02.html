@@ -1,0 +1,52 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			// Задача: нарисувайте плажна топка, всяка
+			// половина да е от 4 цветни парчета
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 3, 3, 8 );
+			camera.lookAt( scene.position );
+
+			// за удобство
+			var pi2 = Math.PI/2;	// пи/2 - ще ви трябва най-вероятно
+			
+			// Бяла сфера без осветяване - цветовете са еднакво ярки
+			// Тази сфера трябва да се разцепи на 8 цветни парчета
+			var geometry = new THREE.SphereGeometry( 1.5, 16, 16 );
+			var material = new THREE.MeshBasicMaterial();
+			scene.add( new THREE.Mesh( geometry, material ) );
+			
+			// въртене на сцената
+			function drawFrame( t )
+			{
+				scene.rotation.x = t/1000;
+				scene.rotation.y = t/1200;
+				renderer.render( scene, camera );
+			}
+			
+		</script>
+	</body>
+</html>

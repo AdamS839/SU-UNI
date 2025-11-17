@@ -1,0 +1,97 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+			} 
+		}
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+
+			// Задача: направете полет над кристална планета
+			// с големи, ръбести, лъскави кристали
+			
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 100 );
+			camera.lookAt( new THREE.Vector3() );
+			var controls = new OrbitControls(camera, renderer.domElement);
+			controls.update();
+
+			// Планета - за момента е сфера, решете как да
+			// я кристализирате цялата (подсказка - не чрез сфера)
+			var geometry = new THREE.IcosahedronGeometry( 40, 10 );
+			// var geometry = new THREE.SphereGeometry( 20, 16, 16 );
+			var material = new THREE.MeshPhongMaterial({
+				flatShading: true, // плоско осветяване - всяка стена е едноцветна
+				shininess: 150, // степен на лъскавост
+				specular: 'white' // цвят на лъскавината
+			});
+
+			var pos = geometry.getAttribute( 'position' );
+			// get position
+
+			for (var i=0; i<pos.count; i++)
+			{
+				// get x, y, z values
+				var x = pos.getX(i),
+					y = pos.getY(i),
+					z = pos.getZ(i);
+					
+				// create a formula to randomize the coordinates
+				var k = 0.98 + 0.06*Math.sin(x*y+z*z*z);
+				//set new xyz position to randomize the crystals of the icosahedron
+				pos.setXYZ( i, k*x, k*y, k*z );
+			}
+			// let three js compute everything
+			geometry.computeVertexNormals(); 
+			
+			// put the mesh down the y axis
+			var solid = new THREE.Mesh( geometry, material );
+			scene.add( solid );
+			solid.position.y = -35;
+			
+			var light = new THREE.PointLight("red", 500);
+			light.position.set( 0, 10, 10 );
+			scene.add( light );
+
+			// put strong colored light
+			var light = new THREE.PointLight( "magenta", 1500 );
+			light.position.set( 0, 0, 50 );
+			scene.add( light );
+			
+			function drawFrame( t )
+			{
+				solid.rotation.x = t/2000;
+				renderer.render( scene, camera );
+			}
+			
+			function animate() {
+				requestAnimationFrame( animate );
+				controls.update();
+				renderer.render( scene, camera );
+			}
+			animate();
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			// Задача: направете конструкция, която изглежда
+			// като голям куб, от върховете на който са
+			// изрязани кубчета във вътрешните върхове на
+			// които пък са добавени още по-малки кубчета.
+			// Броят геометрични обекти да е под 10.
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 12, 14, 28 );
+			camera.lookAt( scene.position );
+
+			
+			// първи обект
+			var geometry = new THREE.BoxGeometry( 8, 10, 10 );
+			var material = new THREE.MeshPhongMaterial( );
+			var obj = new THREE.Mesh( geometry, material );
+			scene.add( obj );
+
+			// втори обект
+			geometry = new THREE.BoxGeometry( 10, 8, 10 );
+			obj = new THREE.Mesh( geometry, material );
+			scene.add( obj );
+
+			// трети обект
+			geometry = new THREE.BoxGeometry( 10, 10, 8 );
+			obj = new THREE.Mesh( geometry, material );
+			scene.add( obj );
+
+			// четвърти обект
+			geometry = new THREE.BoxGeometry( 9, 9, 9 );
+			obj = new THREE.Mesh( geometry, material );
+			scene.add( obj );
+
+			
+			var light = new THREE.PointLight( 'white', 1000 );
+			light.position.set( 17, 14, 11 );
+			scene.add( light );
+
+			light = new THREE.PointLight( 'white', 1000 );
+			light.position.set( -17, -14, -11 );
+			scene.add( light );
+
+			
+			function drawFrame( t )
+			{
+				scene.rotation.x = t/2300;
+				scene.rotation.y = t/2000;
+				renderer.render( scene, camera );
+			}
+			
+		</script>
+	</body>
+</html>

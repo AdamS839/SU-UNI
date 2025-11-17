@@ -1,0 +1,72 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+				"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
+
+			// Задача: чрез използването на ParametricGeometry
+			// създайте вълнообразна повърхност.
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 3 );
+			camera.lookAt( scene.position );
+
+			// Тази функция е дефинирана в диапазона u=[0,1] и v=[0,1]
+			// като изчислява координатите (x,y,z) на повърхност в
+			// точка, определена от (u,v). Т.е. функцията реализира
+			// функциите x(u,v), y(u,v) и z(u,v).
+			function myFunc( u, v, point )
+			{
+				// В този пример се генерира равна повърхност z=0 за
+				// x=[-0.5,0.5] и y=[-0.5,0.5] - това е квадрат от (-0.5,-0.5,0) до (0.5,0.5,0)
+				// Вместо равната повърхност трябва да сложите вълнообразна
+				point.set( u-0.5, v-0.5, 0 );
+			}
+			
+			// Създаваме параметрична форма, която е квадрат, разделен
+			// на 100х100 квадратчета. Колкото са повече на брой тези
+			// квадратчета, толкова по-гладка ще е формата, но и по-тежка
+			// за работа.
+			var waves = new ParametricGeometry( myFunc, 100, 100 );
+			// Three.js оптимизира повърхнините, като не рисува обратната
+			// им страна. Но нашата повърхност искаме да я гледаме от
+			// двете страни, затова казваме, че искаме да е DoubleSide
+			var material = new THREE.MeshPhongMaterial( {side:THREE.DoubleSide} );
+			var surface = new THREE.Mesh( waves, material );
+			scene.add( surface );
+
+			// Светлини
+			var light = new THREE.PointLight( 'white', 700 );
+			light.position.set( 0, 0, 20 );
+			scene.add( light );
+			
+			function drawFrame( t )
+			{
+				surface.rotation.y = t/1000;
+				renderer.render( scene, camera );
+			}
+			
+		</script>
+	</body>
+</html>

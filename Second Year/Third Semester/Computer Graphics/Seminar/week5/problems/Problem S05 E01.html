@@ -1,0 +1,75 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+				"csg/": "https://cdn.jsdelivr.net/gh/looeee/threejs-csg@main/src/CSG/"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+			import {CSG} from "csg/CSG.js"; // Включване на библиотека за CSG
+
+			// Задача: конструирайте цилиндрична тръба като
+			// стената ѝ има дебелина
+
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 'lavenderblush' );
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 60 );
+			camera.lookAt( new THREE.Vector3() );
+
+			
+			var controls = new OrbitControls(camera, renderer.domElement);
+			controls.update();
+
+		
+			var a = new THREE.Mesh( new THREE.CylinderGeometry( 4, 4, 15 ) );
+			var b = new THREE.Mesh( new THREE.CylinderGeometry( 2, 2, 15 ) );
+
+			var csg = new CSG();
+			csg.subtract( [a, b] );
+			
+			var c = csg.toMesh();
+			c.material = new THREE.MeshLambertMaterial( {color:'crimson'} );
+			scene.add(c);
+			
+			
+			var light = new THREE.PointLight( 'white', 150 );
+			light.position.set( 0, 5, 10 );
+			scene.add( light );
+			
+			
+			function drawFrame( t )
+			{
+				// въртим тръбата
+				c.rotation.set( t/1000, t/1200, t/1300 );
+				
+				renderer.render( scene, camera );
+			}
+			function animate() {
+                requestAnimationFrame( animate );
+                controls.update();
+                renderer.render( scene, camera );
+            }
+            animate();
+		</script>
+	</body>
+</html>

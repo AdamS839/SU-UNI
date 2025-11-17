@@ -1,0 +1,76 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+			} 
+		}
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 60, aspect );
+			camera.position.set( 2, 3.5, 4 );
+			camera.lookAt( scene.position );
+			
+			const orbit = new OrbitControls(camera, renderer.domElement);
+			orbit.update();
+
+			var geometry = new THREE.BoxGeometry( 3, 1, 0.3 );
+			var material = new THREE.MeshPhongMaterial({color: "blue"});
+			var cube = new THREE.Mesh( geometry, material );
+			cube.position.set( 0, 0, 0 );
+			scene.add( cube );
+
+			var geometry = new THREE.BoxGeometry( 3, 1, 0.3 );
+			var material = new THREE.MeshPhongMaterial({color: "blue"});
+			var cube = new THREE.Mesh( geometry, material );
+			cube.position.set( 0, 2, 0 );
+			scene.add( cube );
+
+			var geometry = new THREE.BoxGeometry( 1, 1, 0.3 );
+			var material = new THREE.MeshPhongMaterial({color: "blue"});
+			var cube = new THREE.Mesh( geometry, material );
+			cube.position.set( -1, 1, 0 );
+			scene.add( cube );
+
+			var geometry = new THREE.BoxGeometry( 1, 1, 0.3 );
+			var material = new THREE.MeshPhongMaterial({color: "blue"});
+			var cube = new THREE.Mesh( geometry, material );
+			cube.position.set( 1, 1, 0 );
+			scene.add( cube );
+
+
+			var light = new THREE.PointLight( 'white', 10 );
+			light.position.set( 2, 2, 3 );
+			scene.add( light );
+
+			var axis = new THREE.AxesHelper( 5 );
+			scene.add( axis );
+
+			function animate() {
+			requestAnimationFrame(animate);
+			orbit.update();
+			renderer.render(scene, camera);
+			}
+			animate();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+				"csg/": "https://cdn.jsdelivr.net/gh/looeee/threejs-csg@main/src/CSG/"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {CSG} from "csg/CSG.js";
+			
+			// Задача: конструирайте ... мистериозния обект
+			// с трите различни профила
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 'lightgray' );
+
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 60 );
+			camera.lookAt( new THREE.Vector3( 0, -2, 0) );
+
+			
+			// външен цилиндър
+			var ring = new THREE.Mesh(
+				new THREE.CylinderGeometry( 10, 10, 20, 160 ),
+				new THREE.MeshPhongMaterial({
+					color: 'dimgray',
+					shininess: 100,
+					specular: 0xA0C0F0})
+			);
+			
+			// дупка в цилиндъра
+			var hole = new THREE.Mesh( new THREE.CylinderGeometry( 7, 7, 21, 160 ) );
+			
+			// изрязващи паралелепипеди, с които накрая ще
+			// се формират двете стърчащи неща
+			var bar1 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 20 ) );
+				bar1.position.set( 6, 6.5, 0 );
+			var bar2 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 20 ) );
+				bar2.position.set( -6, 6.5, 0 );
+			var bar3 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 20 ) );
+				bar3.position.set( 6, -6.5, 0 );
+			var bar4 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 20 ) );
+				bar4.position.set( -6, -6.5, 0 );
+			var bar5 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 10 ) );
+				bar5.position.set( 0, -6.5, 8 );
+			var bar6 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 10 ) );
+				bar6.position.set( 0, 6.5, -8 );
+
+			// сглобяване на обекта чрез изрязване - не е по
+			// най-краткия начин, понеже за красоте двата
+			// стърчащи елемента са също извити по пръстена
+			var csg = new CSG();
+			csg.subtract( [ring, hole, bar1, bar2, bar3, bar4, bar5, bar6] );
+			var mystery = csg.toMesh();
+			scene.add( mystery );
+			
+
+			// светлини
+			var light1 = new THREE.PointLight( 'white', 20000 );
+			light1.position.set( 0, 100, 50 );
+			scene.add( light1 );
+			
+			var light2 = new THREE.PointLight(' cyan', 500 );
+			light2.position.set( 0, 0, 0 );
+			scene.add( light2 );
+
+			var light3 = new THREE.PointLight( 'white', 20000 );
+			light3.position.set( 0, -100, 50 ); 
+			scene.add( light3 );
+			
+			var light4 = new THREE.PointLight(' white', 20000 );
+			light4.position.set( 0, 0, 100 );
+			scene.add( light4 );
+			// стига толкова светлини
+			
+
+			function drawFrame( t )
+			{
+				// въртим мистериозния обект
+				mystery.rotation.set( t/1000, t/1200, t/1300 );
+				
+				renderer.render( scene, camera );
+			}
+			
+		</script>
+	</body>
+</html>

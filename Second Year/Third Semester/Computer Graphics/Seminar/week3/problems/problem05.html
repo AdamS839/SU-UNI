@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+			} 
+		}
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+            import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry.js';
+
+			// Задача: чрез използването на ParametricGeometry
+			// създайте вълнообразна повърхност.
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+            
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 30 );
+			camera.lookAt( scene.position );
+
+            var controls = new OrbitControls( camera, renderer.domElement );
+            controls.update();
+
+			// Тази функция е дефинирана в диапазона u=[0,1] и v=[0,1]
+			// като изчислява следното: z координатата в точка (x,y)
+			// зависи от разстоянието r до (0,0), като на това разстояние
+			// се смята cos(r) - коефициентите *2 и /2 определят колко
+			// нагъсто да са вълните и колко високи да са те.
+			function myFunc( u, v, point )
+			{
+				var x = 15*(u-0.5);
+				var y = 15*(v-0.5);
+				var r = Math.sqrt(x*x+y*y);
+				var z = Math.cos(2*r)/2;
+				
+				point.set( x, y, z );
+			}
+			
+			// Създаваме параметрична форма, която е квадрат, разделен
+			// на 100х100 квадратчета. Колкото са повече на брой тези
+			// квадратчета, толкова по-гладка ще е формата, но и по-тежка
+			// за работа.
+			var waves = new ParametricGeometry( myFunc, 100, 100 );
+			var material = new THREE.MeshPhongMaterial( {side:THREE.DoubleSide} );
+			var surface = new THREE.Mesh( waves, material );
+			scene.add( surface );
+            
+            var directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1.4);
+            directionalLight.position.set(10, 3, 15);
+            scene.add(directionalLight);
+            
+            var directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1.4);
+            directionalLight.position.set(-10, 3, -15);
+            scene.add(directionalLight);
+
+            var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.2);
+            scene.add(ambientLight);
+
+            // ordit controls movement function
+            function animate() {
+                requestAnimationFrame( animate );
+                controls.update();
+                renderer.render( scene, camera );
+            }
+            animate();
+		</script>
+	</body>
+</html>

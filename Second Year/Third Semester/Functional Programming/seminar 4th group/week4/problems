@@ -1,0 +1,89 @@
+(define (filter pred lst)
+  (cond
+    ((null? lst) '())
+    ((pred (car lst))
+     (cons (car lst) (filter pred (cdr lst))))
+    (else (filter pred (cdr lst)))))
+
+(define (foldr operation null_value lst)
+  (if (null? lst) null_value
+      (operation (car lst)
+          (foldr operation null_value (cdr lst)))))
+
+(define (foldl operation null_value lst)
+  (if (null? lst) null_value
+      (foldl operation (operation null_value (car lst)) (cdr lst))))
+
+;problem 1.1
+
+(define (distance t1 t2)
+  (sqrt (+ (expt (- (car t1) (car t2)) 2) (expt (- (cdr t1) (cdr t2)) 2))))
+
+; problem 2.1
+
+(define (list-square-sum lst)
+  (apply + (map (lambda (x) (expt x 2)) lst)))
+
+; problem 2.2
+
+(define (str-count str)
+  (if (string=? s "") 0
+      (+ 1 (str-count (substring s 1)))))
+
+(define (list-char-count lst)
+  (map (lambda (x) (string-length x)) lst))
+
+; problem 3.1
+
+(define (list-cubes lst)
+  (map (lambda (x) (expt x 3)) lst))
+
+; problem 3.2
+
+(define (list-even-cubes lst)
+  (filter even? (list-cubes lst)))
+
+; problem 3.3
+
+(define (list-even-cubes-sum lst)
+  (apply + (list-even-cubes lst)))
+
+; problem 3.4
+
+(define (count-predicate p? lst)
+  (foldr (lambda (i acc) (+ 1 acc)) 0 (filter p? lst)))
+
+; problem 5.2
+
+(define (zip l1 l2)
+  (map (lambda (one two) (+ one two)) l1 l2))
+
+(define (zip1 op l1 l2)
+  (map op l1 l2))
+
+; problem 5.3
+
+(define (matrix-transpose lst)
+  (apply map list lst))
+
+
+; problem 5.4
+
+(define (flatten lst)
+  (cond ((null? lst) `())
+        ((pair? (car lst)) (append (flatten (car lst)) (flatten (cdr lst))))
+        (else (cons (car lst) (flatten (cdr lst))))))
+
+(define (atom? t)
+  (not (pair? t)))
+
+(define (flatten t)
+  (cond ((null? t) '())
+        ((atom? t) (list t))
+        (else (append (flatten (car t)) (flatten (cdr t))))))
+
+; problem 5.5
+
+(define (group-by key-fn lst)
+  (list (list #f (filter (lambda (x) (not (key-fn x))) lst))
+        (list #t (filter (lambda (x) (key-fn x)) lst))))

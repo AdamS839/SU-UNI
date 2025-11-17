@@ -1,0 +1,95 @@
+; Асоциативни списъци
+
+(define (make-assoc f l)
+  (map (lambda (x)
+         (cons x (f x))) l))
+
+(define assoc-list (make-assoc (lambda (x) (* x x)) '(1 2 3 4 5)))
+
+(define (filter p? l)
+  (cond ((null? l) l)
+        ((p? (car l)) (cons (car l) (filter p? (cdr l))))
+        (else (filter p? (cdr l)))))
+
+; problem 01 - keys / values
+
+(define (keys assoc-list)
+  (cond ((null? assoc-list) `())
+        (else (cons (caar assoc-list) (keys (cdr assoc-list))))))
+
+(define (values-al assoc-list)
+  (cond ((null? assoc-list) `())
+        (else (cons (cdar assoc-list) (values-al (cdr assoc-list))))))
+
+(define (keys-map al)
+  (map car al))
+
+(define (values-map al)
+  (map cdr al))
+
+;(keys assoc-list) ; -> '(1 2 3 4 5)
+;(values-al assoc-list) ; -> '(1 4 9 16 25)
+
+; problem 02 - search
+
+(define (search k al)
+  (let ((result (filter (lambda (pair) (equal? k (car pair))) al)))
+    (if (null? result) #f (car result))))
+
+; problem 03 - delete
+
+(define (delete k al)
+  (filter (lambda (pair) (not (equal? k (car pair)))) al))
+
+;(delete 3 assoc-list) ; -> '((1 . 1) (2 . 4) (4 . 16) (5 . 25))
+;(delete 6 assoc-list) ; -> '((1 . 1) (2 . 4) (3 . 9) (4 . 16) (5 . 25))
+
+; problem 04 - add
+
+(define (add-assoc k v al)
+  (cond ((null? al) (cons k v))
+        ((equal? (search k al) #f) (append al (list (cons k v))))
+        (else (map (lambda (pair) (if (equal? k (car pair)) (cons k v) pair)) al))))
+        
+;(add-assoc 6 36 assoc-list) ; -> '((1 . 1) (2 . 4) (3 . 9) (4 . 16) (5 . 25) (6 . 36))
+;(add-assoc 4 36 assoc-list) ; -> '((1 . 1) (2 . 4) (3 . 9) (4 . 36) (5 . 25))
+
+; problem 05 - histogram
+
+(define (foldl op nv l)
+  (if (null? l) nv
+      (foldl op (op nv (car l)) (cdr l))))
+
+(define (foldr op nv l)
+  (if (null? l) nv
+      (op (car l) (foldr op nv (cdr l)))))
+
+;(histogram '(8 7 1 7 8 2 2 8 2 7 8 1)) ; -> '((8 . 4) (7 . 3) (1 . 2) (2 . 3))
+(define (unique l)
+  (foldl (lambda (res el)
+           (if (member el res) res
+               (append res (list el)))) ; first, second, ... instead of ..., second, first
+         '() l))
+
+(define (unique l)
+  (foldr (lambda (el res) (if (member el res) res (cons el res))) `() l))
+
+(define (unique l)
+  (cond ((null? l) `())
+        (else (cons (car l) (unique (filter (lambda (x) (not (equal? x (car l)))) (cdr l)))))))
+
+;(define (unique pairs)
+;  (foldr (lambda (pair res) (if (assoc (car pair) res) res (cons pair res))) `() pairs))
+
+(define (times x l)
+  (foldr (lambda (el res) (+ res (if (= x el) 1 0))) 0 l))
+
+
+(define (histogram l)
+  (unique (map (lambda (x) (cons x (times x l))) l)))
+
+;(define (histogram l)
+ ; (map (lambda (x) (cons x (times x l))) (unique l)))
+
+
+

@@ -1,0 +1,58 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			// Задача: измислете как да представите обекта
+			// от условието на задачата, чрез използване на
+			// готови обекти от Three.js.
+
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 30 );
+			camera.lookAt( scene.position );
+
+			var object = new THREE.Group();
+			scene.add( object );
+			
+			// Тук добавете обекти към object
+			// Ето един куб, примерно.
+			var geometry = new THREE.BoxGeometry( 5, 5, 5 );
+			var material = new THREE.MeshPhongMaterial();
+			object.add( new THREE.Mesh( geometry, material ) );
+
+			// Светлини
+			var light = new THREE.PointLight( 'white', 700 );
+			light.position.set( 0, 0, 20 );
+			scene.add( light );
+			
+			function drawFrame( t )
+			{
+				object.rotation.x = t/1000;
+				object.rotation.y = t/1200;
+				renderer.render( scene, camera );
+			}
+			
+		</script>
+	</body>
+</html>

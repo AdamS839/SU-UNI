@@ -1,0 +1,99 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+				"csg/": "https://cdn.jsdelivr.net/gh/looeee/threejs-csg@main/src/CSG/"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+			import {CSG} from "csg/CSG.js";
+			
+			
+			// Задача: конструирайте ... мистериозния обект
+			// с трите различни профила
+
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color( 'white' );
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 0, 0, 100 );
+			camera.lookAt( new THREE.Vector3() );
+
+
+			var mystery = new THREE.Group();
+			scene.add( mystery );
+
+				
+			var ring = new THREE.Mesh( new THREE.CylinderGeometry( 9.8, 9.8, 20, 160 ) );
+			var hole = new THREE.Mesh( new THREE.CylinderGeometry( 7, 7, 21, 160 ) );
+			var material = new THREE.MeshLambertMaterial({
+				color: 'crimson',
+				transparent : !true,
+				opacity: 0.75});
+				
+			var csg = new CSG();
+			csg.subtract( [ring, hole] );
+			var body = csg.toMesh();
+			body.material = material;
+			mystery.add( body );
+
+
+			material = new THREE.MeshLambertMaterial({
+				color: 'white',
+				transparent: true,
+				opacity: 0.75,
+				side: THREE.DoubleSide });
+				
+			var bar1 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 20 ), material );
+				bar1.position.set( 6, 6.5, 0 );
+			var bar2 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 20 ) );
+				bar2.position.set( -6, 6.5, 0 );
+			var bar3 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 10 ) );
+				bar3.position.set( 0, 6.5, -5 );
+			csg = new CSG();
+			csg.union( [bar1, bar2, bar3] );
+			mystery.add( csg.toMesh() );
+
+			var bar1 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 20 ), material );
+				bar1.position.set( 6, -6.5, 0 );
+			var bar2 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 20) );
+				bar2.position.set( -6, -6.5, 0 );
+			var bar3 = new THREE.Mesh( new THREE.BoxGeometry( 9, 10, 10 ) );
+				bar3.position.set( 0, -6.5, 5 );
+			csg = new CSG();
+			csg.union( [bar1, bar2, bar3] );
+			mystery.add( csg.toMesh() );
+
+
+			var light = new THREE.PointLight( 'white', 20000 );
+			light.position.set( 0, 50, 100 );
+			scene.add( light );
+			
+			
+			function drawFrame( t )
+			{
+				// въртим мистериозния обект
+				mystery.rotation.set( t/1000, t/1200, t/1300 );
+				
+				renderer.render( scene, camera );
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			// Задача: създайте град в равнината - постройките
+			// да са вертикални паралелепипеди със случайна
+			// височина
+			
+			var N = 20; // 10x10 брой "карета" в града
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 6, 7, 20 );
+			camera.lookAt( scene.position );
+
+			
+			// някъде тук постройте града
+			var geometry = new THREE.BoxGeometry( 1, 5, 1 );
+			var material = new THREE.MeshPhongMaterial( );
+			var building = new THREE.Mesh( geometry, material );
+			scene.add( building );
+
+
+			var light = new THREE.PointLight( 'white', 200 );
+			light.position.set( 3, 7, 9 );
+			scene.add( light );
+
+			light = new THREE.PointLight( 'white', 200 );
+			light.position.set( 3, 7, -9 );
+			scene.add( light );
+
+			
+			function drawFrame( t )
+			{
+				scene.rotation.y = t/2000;
+				renderer.render( scene, camera );
+			}
+			
+		</script>
+	</body>
+</html>

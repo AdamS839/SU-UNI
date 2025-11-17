@@ -1,0 +1,86 @@
+﻿<html>
+	<head>
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+		<script type="importmap">
+			{ "imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+			} }
+		</script>
+	</head>
+	<body>
+		<script type="module">
+		
+			import * as THREE from "three";
+
+			// Задача: нарисувайте плажна топка, всяка
+			// половина да е от 4 цветни парчета
+			
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setAnimationLoop( drawFrame );
+			document.body.appendChild( renderer.domElement );
+
+			var scene = new THREE.Scene();
+			
+			var aspect = window.innerWidth/window.innerHeight;
+			var camera = new THREE.PerspectiveCamera( 30, aspect );
+			camera.position.set( 3, 3, 8 );
+			camera.lookAt( scene.position );
+
+			// за удобство
+			var pi2 = Math.PI/2;	// пи/2
+			var cap = Math.PI/12;	// размер на капачките
+			
+			// Червено горно парче - хоризонтален ъгъл 0 до pi/2, вертикален cap до pi/2
+			var geometry = new THREE.SphereGeometry( 1.5, 16, 16, 0, pi2, cap, pi2-cap );
+			var material = new THREE.MeshBasicMaterial( {color: 'red'} );
+			scene.add( new THREE.Mesh( geometry, material ) );
+			// Червено долно парче - хоризонтален ъгъл 2*pi/2 до 3*pi/2, вертикален pi/2 до 2*pi/2-cap
+			geometry = new THREE.SphereGeometry( 1.5, 16, 16, 2*pi2, pi2, pi2, pi2-cap );
+			scene.add( new THREE.Mesh( geometry, material ) );
+
+			// Синьо горно парче
+			geometry = new THREE.SphereGeometry( 1.5, 16, 16, pi2, pi2, cap, pi2-cap );
+			material = new THREE.MeshBasicMaterial( {color: 'blue'} );
+			scene.add( new THREE.Mesh( geometry, material ) );
+			// ... и долно парче
+			geometry = new THREE.SphereGeometry( 1.5, 16, 16, 3*pi2, pi2, pi2, pi2-cap );
+			scene.add( new THREE.Mesh( geometry, material ) );
+
+			// Жълто горно парче
+			geometry = new THREE.SphereGeometry( 1.5, 16, 16, 2*pi2, pi2, cap, pi2-cap );
+			material = new THREE.MeshBasicMaterial( {color: 'yellow'} );
+			scene.add( new THREE.Mesh( geometry, material ) );
+			// ... и долно парче
+			geometry = new THREE.SphereGeometry( 1.5, 16, 16, 4*pi2, pi2, pi2, pi2-cap );
+			scene.add( new THREE.Mesh( geometry, material ) );
+
+			// Зелено горно парче
+			geometry = new THREE.SphereGeometry( 1.5, 16, 16, 3*pi2, pi2, cap, pi2-cap );
+			material = new THREE.MeshBasicMaterial( {color: 'green'} );
+			scene.add( new THREE.Mesh( geometry, material ) );
+			// ... и долно парче
+			geometry = new THREE.SphereGeometry( 1.5, 16, 16, 5*pi2, pi2, pi2, pi2-cap );
+			scene.add( new THREE.Mesh( geometry, material ) );
+			
+			// Бяла горна капачка - не се иска в условието, ама не се стърпях
+			geometry = new THREE.SphereGeometry( 1.5, 32, 16, 0, 4*pi2, 0, cap );
+			material = new THREE.MeshBasicMaterial();
+			scene.add( new THREE.Mesh( geometry, material ) );
+			// ... и долна капачка
+			geometry = new THREE.SphereGeometry( 1.5, 32, 16, 0, 4*pi2, 2*pi2-cap, cap );
+			scene.add( new THREE.Mesh( geometry, material ) );
+			
+			function drawFrame( t )
+			{
+				scene.rotation.x = t/1000;
+				scene.rotation.y = t/1200;
+				renderer.render( scene, camera );
+			}
+			
+		</script>
+	</body>
+</html>
