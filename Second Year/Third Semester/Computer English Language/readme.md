@@ -2,7 +2,7 @@
 
 ## Overview
 
-Very easy subject like english in second semester. \\
+Very easy subject like english in second semester. \n
 Your grade will consist of 3 things:
 1. 5000 word report (without spaces)
 2. presentation based on the topic of the report
@@ -12,3 +12,4 @@ Your grade will consist of 3 things:
 ### Lector
 
 Radostina Mihaleva
+
