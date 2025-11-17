@@ -12,4 +12,4 @@ Adding every week worth of exercises in practicums, plus self preparation (not m
 
 ## Lector
 
-Docent Kalin Georgiev
+Associate professor Kalin Georgiev
