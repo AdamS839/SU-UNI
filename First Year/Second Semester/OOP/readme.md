@@ -14,4 +14,4 @@ SVG Files: [**click here**](https://github.com/AdamS839/SVG-Files)
 
 ---
 ### Lector
-Docent Kalin Georgiev
+Associate professor Kalin Georgiev
