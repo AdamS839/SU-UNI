@@ -16,4 +16,5 @@ The next step in C++ after OOP is to learn about different data structures and h
 ---
 ### Lector
 
-Associate professor Nora Angelova
+Associate professor doctor Nora Angelova
+
