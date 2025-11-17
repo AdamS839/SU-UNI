@@ -28,3 +28,11 @@ Repository for uploading materials for first semester in FMI.
 
 Online library: [**Click here**](https://debian.fmi.uni-sofia.bg/study/index.html) \
 Skelet Site: [**Click here**](https://skelet.ludost.net/)
+
+---
+
+### Useful skills to learn for the future
+
+Learn LaTeX: [**click here**](https://www.latex-tutorial.com/tutorials/)
+
+Site for detexifying LaTeX symbols: [**click here**](https://detexify.kirelabs.org/classify.html)
