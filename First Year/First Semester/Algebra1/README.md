@@ -11,4 +11,4 @@ Matrice calculator online: [**Matrice Calculator**](https://matrixcalc.org/bg/)
 ---
 ## Lector
 
-Docent doctor Evgenia Velikova-Bandova
+Associate professor, doctor Evgenia Velikova-Bandova
