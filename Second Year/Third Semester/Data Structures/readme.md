@@ -13,13 +13,10 @@ The next step in C++ after OOP is to learn about different data structures and h
 5. Trees
 6. Graphs
 
-### Github seminar repo
-
-https://github.com/T3Nzw/data-structures-and-algorithms/
-
 ---
 ### Lector
 
 Associate professor doctor Nora Angelova
+
 
 
