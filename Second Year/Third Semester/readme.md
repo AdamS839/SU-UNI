@@ -2,7 +2,8 @@
 ### 2025/2026
 
 ## Major Update Dates and changes:
-*soon*
+
+**05.02.2026** - Tasks for programming
 
 ## Contents:
 
@@ -33,5 +34,6 @@ Reposity for uploading materials for third semester. *(will exclude tests or con
 Learn LaTeX: [**click here**](https://www.latex-tutorial.com/tutorials/)
 
 Site for detexifying LaTeX symbols: [**click here**](https://detexify.kirelabs.org/classify.html)
+
 
 
