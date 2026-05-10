@@ -17,15 +17,11 @@
 
 ### About
 
-Reposity for uploading materials for third semester. *(will exclude tests or control exams for now)*
+Reposity for uploading materials for third semester.
 
 ### Planning time
 
-*hard planning moment*
-
-### Useful Links
-
-*soon*
+**Everything uploaded**
 
 ---
 
