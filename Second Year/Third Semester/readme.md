@@ -13,6 +13,11 @@
 - Functional Programming - (ADDED)
 - Computer English - (ADDED)
 
+## Elective Courses:
+
+- Bridge - (Added)
+- Computer aided geometric design - (Added)
+
 ---
 
 ### About
