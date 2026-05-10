@@ -7,7 +7,7 @@
 
 ## Contents:
 
-- Computer Graphis - (*will add monthly*)
+- Computer Graphis - (ADDED)
 - Computer Architectures - (*cant add materials for now*)
 - Data Structures - (ADDED)
 - Functional Programming - (ADDED)
