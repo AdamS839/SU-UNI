@@ -20,5 +20,5 @@ The exam is not that difficult, but if you don't study, you wont pass.
 
 ### Lectors
 
-Doctor, head assistant Georgi Georgiev - Skeleta \\
+Doctor, head assistant Georgi Georgiev - Skeleta \
 Assistant Borislav Rizov
