@@ -8,7 +8,7 @@
 ## Contents:
 
 - Computer Graphis - (ADDED)
-- Computer Architectures - (*cant add materials for now*)
+- Computer Architectures - (*Updated readme.md*)
 - Data Structures - (ADDED)
 - Functional Programming - (ADDED)
 - Computer English - (ADDED)
