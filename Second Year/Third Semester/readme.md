@@ -7,25 +7,26 @@
 
 ## Contents:
 
-- Computer Graphis - (*will add monthly*)
+- Computer Graphis - (ADDED)
 - Computer Architectures - (*cant add materials for now*)
 - Data Structures - (ADDED)
 - Functional Programming - (ADDED)
 - Computer English - (ADDED)
 
+## Elective Courses:
+
+- Bridge - (Added)
+- Computer aided geometric design - (Added)
+
 ---
 
 ### About
 
-Reposity for uploading materials for third semester. *(will exclude tests or control exams for now)*
+Reposity for uploading materials for third semester.
 
 ### Planning time
 
-*hard planning moment*
-
-### Useful Links
-
-*soon*
+**Everything uploaded**
 
 ---
 
