@@ -2,7 +2,13 @@
 
 ## Overview
 
-In this semester you'll learn a lot of new things. Put OOP Practicum in SUSI as elective course since it gives you 2 credits and is basically free credits for the course, since you learn the same things. The lector is very chill, calm, funny, helpful, and you'll have a good time in lections. After control 1 if you have 75 points you can do a project that will be the equvalation of the exam. I advice you to try to get a project and do it. If you have made an impression to the lector, even if you don't have enough points, ask nicely and he'll probably try to make something for you. It takes a lot of time, but if you do it good you will get nice points and dont have to go to an exam. I would say go to seminars, because there you'll understands new concepts and the things learned in lections. Practicum is good, but if you have a project to work on, maybe go if you have questions about the project. 
+During this semester, you will be introduced to a wide range of new concepts. It is advisable to enroll in the OOP Practicum in SUSI as an elective course, as it awards 2 credits and effectively provides what could be considered “free credits,” since the material overlaps significantly with the main course content.
+
+The practicum sessions are useful as well, but if you are actively working on the project, it may be more beneficial to attend them selectively, particularly when you have questions related to your implementation.
+
+## Project
+
+After Control 1, if you achieve at least 75 points, you may opt to complete a project instead of sitting the final exam; this project serves as an equivalent assessment.
 
 ## Planning
 
