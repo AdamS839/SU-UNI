@@ -44,6 +44,3 @@ GeoGebra 3D: [**click here**](https://www.geogebra.org/3d)
 ---
 ### Lector
 Associate professor Bogdan Aleksandrov
-
-### Seminar Assistant
-Assistant Rumena Marinova
