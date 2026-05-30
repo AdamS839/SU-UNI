@@ -1,8 +1,11 @@
 # English
 
 ## Overview
+The lecturer is very calm and understanding, fully aware that we are studying at FMI, and as a result, the course grade is based on an essay and a presentation. The essay is usually assigned before May.
 
-The doctor is very calm and understands that we are in FMI, so the course grade is made from an essay and presentation. The essay is given before may i believe. If you want to skip most of English, ask for a presentation in the start of the course and just do it next time. After that just skip all the subject until the essay and after you write the essay you can stop going to the subject.
+If you want to reduce your workload in English, it is a good strategy to request a presentation topic at the beginning of the course and complete it later in the semester. After that, many students choose to stop attending most of the classes and only return for the essay.
+
+This approach can work in practice, but it is still important to be aware of deadlines and requirements throughout the course.
 
 ## Current Assessment Formation
 
