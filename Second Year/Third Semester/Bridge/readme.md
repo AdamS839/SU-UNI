@@ -15,6 +15,7 @@ There are three tournaments held during the semester, and if you manage to accum
 If you do not achieve a sufficiently high ranking in the tournaments, you will have to take a theoretical exam instead. This exam combines knowledge of the game rules, combinatorics, bidding conventions, and practical techniques.
 
 Although the exam is not considered particularly difficult, it still requires preparation; without studying, it is unlikely that you will pass.
+
 ---
 
 ### Lectors
