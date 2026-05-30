@@ -1,21 +1,20 @@
 # Overview
 
-Interesting elective course that gives alot of credits and is about playing cards, yes - playing cards. There you will learn about the game **bridge**. 
-Things like **points**, **HCP** (high card points), **total points**, **announces**, different game **techniques** and maybe **combinatorics** for
-different card combinations will become familiar to you. 
+This is an interesting elective course that offers a relatively high number of credits and is centered around card games—specifically, the game of bridge.
 
-Theres a starting pdf file about the base rules and point meanings.
+Throughout the course, you will become familiar with fundamental concepts such as scoring systems, high card points (HCP), total point evaluation, announcements (bidding), and various gameplay techniques. In addition, you may encounter elements of combinatorics when analysing possible card distributions and combinations.
 
-Theres also different game techniques you can learn and use them.
+At the beginning of the course, a PDF document is provided, which outlines the basic rules of the game and explains the point system in detail.
+
+Beyond the theoretical foundations, there are also multiple practical strategies and techniques that you can learn and apply during gameplay, which gradually improve your understanding and performance.
 
 ## Exam overview
 
-Theres 3 tournaments during the semester and if you manage to win **8.5** total points from there, you will get 6.00 as a grade.
+There are three tournaments held during the semester, and if you manage to accumulate a total of 8.5 points across them, you will automatically receive a grade of 6.00.
 
-If you dont place well, there will be an theoretical exam that combines both game rules knowledge, combinatorics, technique usage and announces.
+If you do not achieve a sufficiently high ranking in the tournaments, you will have to take a theoretical exam instead. This exam combines knowledge of the game rules, combinatorics, bidding conventions, and practical techniques.
 
-The exam is not that difficult, but if you don't study, you wont pass.
-
+Although the exam is not considered particularly difficult, it still requires preparation; without studying, it is unlikely that you will pass.
 ---
 
 ### Lectors
