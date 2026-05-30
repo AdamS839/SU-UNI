@@ -2,7 +2,7 @@
 
 ## Overview
 
-#1 Combinatorics and Graph hater \
+#1 Combinatorics hater \
 Theory not so bad, do some excercises after seminars and you'll be fine.
 
 ### Links
