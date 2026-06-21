@@ -6,9 +6,10 @@ The material covered in this course is exceptionally challenging, and the associ
 
 ## Tips
 
-If you don't want to retake the exam in september, learn very consistantly the new topics and look for other resources to read from. Solve problems and try to understand how they work. Try solving and writing the theory questions from the semester that will be published.
+If you want to avoid retaking the exam in September, it is crucial to study the new material consistently and thoroughly. Make use of additional resources, solve problems regularly, and focus on understanding the reasoning behind them. It is also important to practice the theoretical questions from the semester once they are published.
 
-Again, it's better to secure most exams, so if you don't have what it takes to pass now, don't waste your time and learn other subjects and if you have more time, you can return in this one. 
+At the same time, it is better to secure the majority of your exams rather than invest too much time in one you may not be ready to pass. If you feel unprepared at this stage, it may be wiser to focus on your other subjects and return to this one later if time allows.
+
 
 Good luck!
 
@@ -43,7 +44,7 @@ All added.
 
 ## Useful Sites
 
-Link for past year tests and notes from the docent of KN2: [**Click here**](https://store.fmi.uni-sofia.bg/fmi/logic/eai.html)
+Link for past year tests and notes from the associate professor of KN2: [**Click here**](https://store.fmi.uni-sofia.bg/fmi/logic/eai.html)
 
 ### Also check out
 
