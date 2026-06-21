@@ -1,6 +1,6 @@
 # Overview
 
-This is an interesting elective course that offers a relatively high number of credits and is centered around card games—specifically, the game of bridge.
+This is an interesting elective course that offers a relatively high number of credits and is centered around card games - specifically, the game of bridge.
 
 Throughout the course, you will become familiar with fundamental concepts such as scoring systems, high card points (HCP), total point evaluation, announcements (bidding), and various gameplay techniques. In addition, you may encounter elements of combinatorics when analysing possible card distributions and combinations.
 
