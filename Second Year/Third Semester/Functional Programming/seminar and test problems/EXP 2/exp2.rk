@@ -1,0 +1,39 @@
+#lang racket
+
+(define (pow-i x n) 
+    (define (iter times prod) (cond ((zero? times) prod)
+                                                                                    (else (iter (- times 1) (* prod x) ))))
+    (iter n 1))
+
+(displayln (pow-i 2 3))
+
+(define (to-binary n)
+    (define (iter n p acc) (cond ((zero? n) acc)
+                                                                (else (iter (quotient n 2) (* p 10) (+ acc (* p (remainder n 2)))))))
+    (iter n 1 0))
+
+(displayln (to-binary 8))
+(displayln (to-binary 15))
+(displayln (to-binary 42))
+
+(define (to-decimal n)
+    (define (iter n p acc) (cond ((zero? n) acc)
+                                                                (else (iter (quotient n 10) (* p 2) (+ acc (* p (remainder n 10)))))))
+    (iter n 1 0))
+
+(displayln (to-decimal 1000))
+(displayln (to-decimal (to-binary 1234)))
+
+(define (prime? n)
+    (define (iter start end) (cond ((> start end) "true")   
+                                                                    ((zero? (remainder n start)) "false" )
+                                                                    (else (iter (+ start 1) end))))
+    (if (> n 1) 
+    (iter 2 (ceiling (sqrt n))) 
+    "false"))
+
+(displayln (prime? 120))
+(displayln (prime? 257))
+(displayln (prime? 13))
+
+

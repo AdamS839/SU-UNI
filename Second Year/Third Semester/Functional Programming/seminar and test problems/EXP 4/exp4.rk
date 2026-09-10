@@ -1,0 +1,121 @@
+#lang racket
+
+(define (map1 f list) (cond ((null? list) `())
+                            (else (cons (f (car list)) (map1 f (cdr list))))))
+
+(define (filter1 p? list) (cond ((null? list) #t)
+                                ((p? (car list)) (cons (car list) (filter1 p? (cdr list))))
+                                (else (filter1 p? (cdr list)))))
+
+;(displayln (filter1 even? `(1 2 3 4 5 6 7 8)))
+
+(define (foldr op null-val list) (if (null? list) null-val
+                                     (op (car list) (foldr op null-val (cdr list)))))
+
+;(displayln (foldr + 0 `(1 2 3 4 5 6)))
+
+(define (foldl op null-val list) (if (null? list) null-val
+                                     (foldl op (op null-val (car list)) (cdr list))))
+
+(define (reverse lst) (if (null? lst) `()
+                           (append (reverse (cdr lst)) (list (car lst)))))
+
+;(displayln (reverse `(1 2 3 4))
+
+(define (length lst) (if (null? lst) 0
+                         (+ 1 (length (cdr lst)))))
+
+;(displayln (length `(1 2 3 4))
+
+
+(define (at n lst) (cond ((null? lst) `())
+                         ((zero? n) (car lst))
+                         (else (at (- n 1) (cdr lst)))))
+
+;(displayln  (at 4 `(1 4 3 2 5 4 6 3))) ;-> 5
+
+(define (take n lst) (cond ((null? lst) `())
+                           ((not (zero? n)) (append (list (car lst)) (take (- n 1) (cdr lst))))
+                           (else `())))
+
+;(displayln (take 3 `(1 2 3 4 5 6 7 8))) ;-> `(1 2 3)
+;(displayln (take 13 `(1 2 3 4 5 6 7 8))) ;-> `(1 2 3 4 5 6 7 8)
+
+(define (drop n lst) (cond ((null? lst) `())
+                           ((zero? n) (append (list (car lst)) (cdr lst)))
+                           (else (drop (- n 1) (cdr lst)))))
+
+;(displayln (drop 3 `(1 2 3 4 5 6 7 8))) ;-> `(4 5 6 7 8)
+;(displayln (drop 13 `(1 2 3 4 5 6 7 8))) ;-> `()
+
+(define (append1 l1 l2) (cond ((null? l1) l2)
+                              ((null? l2) l1)
+                              (else (cons (car l1) (append1 (cdr l1) l2)))))
+
+;(append1 `(1 2 3) `(4 5 6)) ;-> `(1 2 3 4 5 6)
+
+(define (all? p? lst) (cond ((null? lst) #t)
+                            ((not (p? (car lst))) #f)
+                            (else #f)))
+
+(define (any? p? lst) (cond ((null? lst) #f)
+                            ((p? (car lst)) #t)
+                            (else (any? p? (cdr lst)))))
+
+;(displayln (any? (lambda (x) (> x 10)) '(4 2 6 3 1))) ; -> #f
+;(displayln (all? even? '(1 2 3 4 5))); -> #f
+;(displayln (any? even? '(1 2 3 4 5))); -> #t
+
+(define (all1? p? lst) (cond ((null? lst) #t)
+                             ((= (length lst) (length (filter p? lst))) #t)
+                             (else #f)))
+
+(define (all2? p? lst) (cond ((null? lst) #t)
+                             ((andmap p? lst) #t)
+                             (else #f)))
+
+(define (any1? p? lst) (cond ((null? lst) #f)
+                             ((>= (length lst) (length (filter p? lst))) #t)
+                             (else #f)))
+
+(define (any2? p? lst) (cond ((null? lst) #f)
+                             ((ormap p? lst) #t)
+                             (else #f)))
+
+
+(define (zipWith op l1 l2) (cond ((null? l1) `())
+                                 ((null? l2) `())
+                                 (else (append (list (op (car l1) (car l2))) (zipWith op (cdr l1) (cdr l2))))))
+
+;(displayln (zipWith + '(1 2 4) '(5 2 5))) ;-> '(6 4 9)
+
+(define (zip1 l1 l2) (zipWith cons l1 l2))
+
+(define (zip l1 l2) (cond ((null? l1) `())
+                          ((null? l2) `())
+                          (else (cons (cons (car l1) (car l2)) (zip (cdr l1) (cdr l2))))))
+
+;(displayln (zip  '(1 2 3 4) '(#t #f #f))) ;->'((1 . #t) (2 . #f) (3 . #f))
+
+(define (zipW1 op l1 l2) (map (lambda (x) (op (car x) (cdr x))) (zip l1 l2)))
+
+(define (sorted? list) (or (null? list) (null? (cdr list)) (and (<= (car list) (cadr list)) (sorted? (cdr list)))))
+
+
+(define (length-R lst) (foldr (lambda (x acc) (+ 1 acc)) 0 lst))
+(define (length-L lst) (foldl (lambda (acc x) (+ acc 1)) 0 lst))
+
+(define (all-R? p? lst) (foldr (lambda (x acc) (and (p? x) acc)) #t lst))
+(define (all-L? p? lst) (foldl (lambda (acc x) (and acc (p? x))) #t lst))
+
+(define (any-R? p? lst) (foldr (lambda (x acc) (or (p? x) acc)) #f lst))
+(define (any-L? p? lst) (foldl (lambda (acc x) (or acc (p? x))) #f lst))
+
+(define (map-R f lst) (foldr (lambda (x acc) (cons (f x) acc)) `() lst))
+(define (map-L f lst) (foldl (lambda (acc x) (append acc (list (f x)))) `() lst))
+
+(define (reverse-R lst) (foldr (lambda (x acc) (append acc (list x))) `() lst))
+(define (reverse-L lst) (foldl (lambda (acc x) (append (list x) acc)) `() lst))
+
+(define (filter-R p? lst) (foldr (lambda (x acc) (if (p? x) (append (list x) acc) (append acc))) `() lst))
+(define (filter-L p? lst) (foldl (lambda (acc x) (if (p? x) (append acc (list x)) (append acc))) `() lst))

@@ -1,0 +1,102 @@
+#lang racket
+
+(define (5+ x) (+ x 5))
+(define (3* x) (* x 3))
+
+;(displayln (5+ 10))
+;(displayln (3* 10))
+
+(define (compose f g) (lambda (x) (f (g x))))
+
+;(displayln ((compose 5+ 3*) 4))
+
+(define (flip f) (lambda (x y) (f y x)))
+
+;(displayln ((flip -) 10 4))
+
+(define (repeat f n) (lambda (x) (if (= n 0) x ((repeat f (- n 1)) (f x)))))
+
+;(displayln ((repeat (lambda (x) (+ x 1)) 8) 4))
+
+(define (++ x) (+ x 1))
+(define (sq x) (* x x))
+
+(define (twist k f g) (if (zero? k) (lambda (x) x) (lambda (x) (if (even? k) 
+                ((twist (- k 1) f g) (g x)) 
+                ((twist (- k 1) f g) (f x))))))
+
+(define (twist2 k f g) (repeat (compose f g) (quotient k 2)))
+
+(define foo (twist 4 ++ sq))
+(define bar (twist 2 ++ sq))
+
+;(displayln (foo 2))
+;(displayln (bar 2))
+
+(define foo2 (twist2 4 ++ sq))
+(define bar2 (twist2 2 ++ sq))
+
+;(displayln (foo2 2) )
+;(displayln (bar2 2))
+
+(define (curry f) (lambda (x) (lambda (y) (f x y))))
+
+;(displayln (((curry +) 5) 7))
+;(displayln ((((curry compose) 5+) 3*) 4))
+
+
+(define (accumulate operation null-value begin end term next)
+  (if (> begin end) null-value
+      (operation (term begin)
+                 (accumulate operation null-value (next begin) end term next))))
+
+(define (id n) n)
+
+(define (!! n) (accumulate * 1 (if (odd? n) 1 2) n id (lambda (x) (+ x 2))))
+
+;(displayln (!! 5))
+;(displayln (!! 10))
+
+(define (sum-odd-squares a b) (accumulate + 0 (if (odd? a) a (+ a 1)) (if (odd? b) b (- b 1)) (lambda (x) (expt x 2)) (lambda (x) (+ x 2))))
+
+;(displayln (sum-odd-squares 1 10))
+
+(define (binomial n k) (accumulate * 1 1 k (lambda (x) (/ (- (+ 1 n) x) x)) (lambda (x) (+ x 1))))
+
+;(displayln (binomial 8 3))
+
+(define (argmax f a b) (accumulate (lambda (x y) (if (> (f x) (f y)) x y)) a a b id (lambda (x) (+ x 1))))
+
+;(displayln (argmax (lambda (x) (remainder x 7)) 45 50))
+
+(define (all? p? a b) (accumulate (lambda (x y) (and x y)) #t a b (lambda (x) (p? x)) (lambda (x) (+ x 1))))
+
+(define (positive? n) (if (> n 0) #t #f))
+
+;(displayln (all? zero? 1 10))
+;(displayln (all? positive? 1 10))
+
+(define (any? p? a b) (accumulate (lambda (x y) (or x y)) #f a b (lambda (x) (p? x)) (lambda (x) (+ x 1))))
+
+;(displayln (any? zero? 0 100))
+;(displayln (any? positive? -4 0))
+
+(define (digits-count n) (if (zero? n) 1 (accumulate + 0 1 n (lambda (x) 1) (lambda (x) (* x 10)))))
+
+;(displayln (digits-count 1234))
+
+(define (prime? n) (if (< n 2) #f (zero? (accumulate + 0 2 (ceiling (sqrt n)) (lambda (x) (if (zero? (remainder n x)) 1 0)) (lambda (x) (+ x 1))))))
+
+;(displayln (prime? 127))
+;(displayln (prime? 25))
+;(displayln (prime? 191))
+;(displayln (prime? 1))
+
+(define (repeat-a f n) (accumulate compose id 1 n (lambda (x) f) (lambda (x) (+ x 1))))
+
+;(displayln ((repeat-a (lambda (x) (+ x 1)) 10) 1))
+
+(define (twist-a k f g) (accumulate compose id 1 k (lambda (x) (if (odd? x) f g)) (lambda (x) (+ x 1))))
+
+;(displayln ((twist-a 4 ++ sq) 2))
+;(displayln (foo 2))

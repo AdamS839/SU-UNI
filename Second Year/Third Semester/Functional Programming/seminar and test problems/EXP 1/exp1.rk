@@ -1,0 +1,122 @@
+#lang racket/base
+
+(define (sq x) (* x x))
+
+(displayln 
+(+ 
+    (/ 1 4) 
+    (/ 2 5) 
+    (/ 3 8) 
+    (* 6 
+        (- 5.1 1.6) 
+        (-  (/ 9 3) (/ 7 4))
+            )))
+
+(displayln 
+(expt 
+    (/ 
+        (+ 12 8)
+        (- 4 (sqrt 4))) 3))
+
+(displayln (
+    + 
+        (expt 50 (remainder 60 7))
+        (remainder (expt 2 10) 179)
+))
+
+(displayln (
+    +
+        (expt 3 (quotient 60 7))
+        (quotient (expt 2 10) 179)
+))
+
+(define (sign n) (cond ((> n 0) "positive")
+                                                ((< n 0) "negative")
+                                                (else "zero")))
+
+(displayln (sign 12))
+(displayln (sign -12))
+(displayln (sign 0))
+
+(define (leap? year) (and (zero? (remainder year 4)) (or (not (zero? (remainder year 100))) (zero? (remainder year 400)))
+))
+
+(displayln (leap? 2024))
+(displayln (leap? 100))
+
+(define (fact n)
+    (define (iter curr prod) (cond ((zero? curr) prod)
+                                                                     (else (iter (- curr 1) (* prod curr)))))
+    (iter n 1)
+)
+
+(displayln (fact 10))
+
+(define (fib n)
+    (define (iter fst snd count) (cond ((zero? count) fst)
+                                                                             (else (iter snd (+ fst snd) (- count 1)))))
+    (iter 0 1 n))
+
+(displayln (fib 10))
+
+(define (interval-sum a b) 
+    (define (iter curr sum) (cond ((> curr b) sum)
+                                                                  ((integer? curr) (iter (+ curr 1) (+ sum curr)))
+                                                                  (else (iter (+ curr 1) sum))))
+                    (iter (ceiling a) 0))
+
+(displayln (interval-sum 1.5 5.5))
+
+(define (interval-sum2 a b)
+    (define (iter curr sum) (cond ((> curr b) sum)
+                                                                  ((integer? curr) (iter (+ curr 1) (+ sum curr)))
+                                                                  (else (iter (+ curr 1) sum))))
+    (iter (if (integer? a) (+ a 1) (ceiling a)) 0))
+
+(displayln (interval-sum2 1.1 9.6))
+
+(define (count-digit  digit num) 
+    (define (iter d n count) (cond ((zero? n) count)
+                                                                        ((= d (remainder n 10)) (iter d (quotient n 10) (+ count 1)))
+                                                                        (else (iter d (quotient n 10) count))))
+    (iter digit num 0))
+
+(displayln (count-digit 9 199102959))
+(displayln (count-digit 2 19202952))
+
+(define (count-digit-interval d a b) 
+    (define (iter num count) (cond ((> num b) count)
+                                                                     (else (iter (+ num 1) (+ count (count-digit d num))))))
+    (iter a 0))
+
+(count-digit-interval 1 1 12) ;-> 5
+(count-digit-interval 1 1 999) ;->  300
+(count-digit-interval 0 1 999); ->  189
+
+(define (number-len n)
+    (define (iter cur cnt) (cond ((zero? cur) cnt)
+                                                                (else (iter (quotient cur 10) (+ cnt 1)))))
+    (iter n 0))
+
+(displayln (number-len 12345678))
+(displayln (number-len 123))
+(displayln (number-len 0))
+
+(define (reverse-digits n) 
+    (define (iter cur len number) (cond ((zero? cur) number)
+                                                                                (else (iter (quotient cur 10) (- len 1) (+ (* (expt 10 (- len 1)) (remainder cur 10)) number)))))
+    (iter n (number-len n) 0))
+
+(displayln (reverse-digits 123))
+(displayln (reverse-digits 10))
+(displayln (reverse-digits 1234567))
+
+
+
+
+
+
+
+
+
+
