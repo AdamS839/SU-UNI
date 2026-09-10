@@ -10,7 +10,8 @@ You will learn about Scheme and Haskell. The first half of the semester is Schem
  - theoretical exam
  - practical exam (you can skip the practical if you pass the project).
 
-I have added every problem from the seminars and published each lection.
+~~I have added every problem from the seminars and published each lection.~~ \
+I have added better seminar and exam tests problems.
 
 ---
 ### Lector
