@@ -27,6 +27,6 @@ If you successfully pass both parts of the theoretical exam, your final grade is
 
 $$\text{Final Grade} = \frac{\text{Practical Exam} + \text{Theoretical Part 1} + \text{Theoretical Part 2}}{3}$$
 
---
+---
 ### Lector
 Associate professor, doctor Evgenia Velikova
