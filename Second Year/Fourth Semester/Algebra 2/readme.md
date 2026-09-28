@@ -15,7 +15,7 @@ Just like **Linear Algebra** in the first semester, your final grade is determin
 
 ### 1. In-Semester Control Exams
 * There are **3 control exams** held throughout the semester.
-* **The Exemption Rule:** If you pass every control exam (grade $\ge 3$) and maintain an overall average of **at least 4.5**, you can skip the practical exam entirely and proceed straight to the theory.
+* **The Exemption Rule:** If you pass every control exam (grade $\ge 3$) and your overall average across them is **at least 4.5**, you can skip the practical exam entirely and proceed straight to the theory.
 
 ### 2. The Theoretical Exam
 The theory exam consists of two parts:
