@@ -4,7 +4,7 @@
 
 Learn about the groups, rings and polynomials - definitions, properties, theorems, lemmas and their proofs.
 
-Seminars are a must if you want to be able to understand what is going on and the tasks will be theoretical, there won't be a clear methode to solve the problems
+Seminars are a must if you want to be able to understand what is going on and the tasks will be theoretical, there won't be a clear method to solve the problems
 and you will need to know the theory in order to pass the practical exam.
 
 ---
